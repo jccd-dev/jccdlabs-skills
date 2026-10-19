@@ -1,0 +1,4 @@
+interface:
+  display_name: "Shuna — Test Scope"
+  short_description: "Choose meaningful coverage at the right test scope"
+  default_prompt: "Use $shuna-test-triage to decide whether this change needs tests and choose their scope."

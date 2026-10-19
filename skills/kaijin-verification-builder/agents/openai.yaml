@@ -1,0 +1,6 @@
+interface:
+  display_name: "Kaijin — Create Verification"
+  short_description: "Create a concrete project verification procedure"
+  default_prompt: "Use $kaijin-verification-builder to create a verification skill for this project."
+policy:
+  allow_implicit_invocation: false

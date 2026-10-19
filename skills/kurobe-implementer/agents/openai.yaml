@@ -1,0 +1,6 @@
+interface:
+  display_name: "Kurobe — Implement"
+  short_description: "Deliver the smallest complete authorized change"
+  default_prompt: "Use $kurobe-implementer to implement this change and verify its behavior."
+policy:
+  allow_implicit_invocation: false

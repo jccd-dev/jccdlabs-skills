@@ -1,0 +1,23 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "jccdlabs-skills",
+  "version": "0.1.0",
+  "description": "Eight concise development workflows inspired by Rimuru's companions.",
+  "author": {
+    "name": "JC",
+    "url": "https://github.com/jccd-dev"
+  },
+  "repository": "https://github.com/jccd-dev/jccdlabs-skills",
+  "homepage": "https://github.com/jccd-dev/jccdlabs-skills",
+  "license": "MIT",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "JCCDLabs Skills",
+        "shortDescription": "Focused development workflows with Rimuru's squad",
+        "developerName": "JC",
+        "category": "Developer Tools"
+      }
+    }
+  }
+}
