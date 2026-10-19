@@ -75,10 +75,8 @@ codex plugin add jccdlabs-skills@jccdlabs-skills
 
 The plugin supplies no connectors or extra permissions. Refresh its source with `codex plugin marketplace upgrade jccdlabs-skills`, then use your host's plugin update flow.
 
-## Status and credits
+## Status
 
 Initial publication: 2026-10-19. Packaging and installation checks are recorded in the GitHub release. These workflows still need representative project trials; installation compatibility does not establish engineering effectiveness.
-
-Originally authored and refined in JC's Chibako collection. This Git repository is the maintained distribution source. Concepts were adapted in original wording from [Poteto's trust hierarchy](https://x.com/poteto/status/2111133080526495985) and [Cursor pstack](https://github.com/cursor/plugins/tree/main/pstack): architectural invariants, executable checks, concise instructions, and focused review. Test triage grew from JC's supplied skill. Matt Pocock's TDD skill is not bundled.
 
 MIT licensed. Character names are fan-inspired references; this project is unaffiliated with the series and includes no anime artwork or copied dialogue.
