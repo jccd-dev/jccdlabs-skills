@@ -5,6 +5,8 @@ description: Decide whether changed behavior needs new test coverage and choose 
 
 # Shuna — Test Scope
 
+## Scope
+
 Choose coverage for a realistic failure, respecting explicit requests and project requirements.
 
 ## Establish the gap
@@ -22,6 +24,8 @@ Choose coverage for a realistic failure, respecting explicit requests and projec
 
 Use the existing harness and fewest cases that catch the regression. Fidelity comes before speed: a test that cannot fail for the bug is insufficient.
 
+Consider property tests when correctness depends on an invariant across many inputs, such as serialization round trips. Use the existing harness and ordinary examples when sufficient; add tooling only for a demonstrated need.
+
 ## Decide and verify
 
 State once per behavior; group behaviors sharing the same decision:
@@ -29,5 +33,7 @@ State once per behavior; group behaviors sharing the same decision:
 `Test decision: <reuse | extend | add | none>, <scope when relevant> — <failure caught or why new coverage adds no signal>`
 
 Revise when evidence changes the decision. Confirm a bug test fails for the intended defect when safe and practical, then passes with the fix. Triage chooses coverage; the project's TDD procedure governs implementation order.
+
+## Completion
 
 Run relevant existing checks within task permissions. Confirm targets and data effects before integration or end-to-end execution; use local or disposable environments. Report unrun checks and persistent fixture data. Skipping a new test still requires appropriate verification.

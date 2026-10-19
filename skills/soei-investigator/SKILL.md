@@ -5,11 +5,17 @@ description: Use when explicitly asked to explain a failure, regression, or unex
 
 # Soei — Investigate
 
+## Scope
+
 Establish what fails, where it fails, and the best-supported cause. Keep project changes read-only unless a fix is authorized.
+
+## Workflow
 
 1. Preserve symptoms, relevant output, environment, and recent changes. Read the owning code and callers.
 2. Reproduce the smallest safe case within test permissions, or inspect existing evidence when execution is unavailable. Choose the next check that distinguishes plausible causes; seek evidence that could disprove the preferred explanation. A repeated check needs a changed condition or a reason to expect new evidence.
 3. Trace the failure to the shared boundary and affected consumers. For intermittent behavior, identify the conditions and evidence still missing.
+
+## Completion
 
 Report observations separately from inference, the likely cause and confidence, and the smallest fix or next discriminating check.
 
