@@ -34,6 +34,10 @@ The `$skill-name` examples use Codex syntax. Use your host's skill selector or s
 
 After a proposal, "Proceed with the recommended approach" authorizes implementation within the agreed scope. You do not need to choose Kurobe yourself when Rimuru is coordinating.
 
+## Scenario prompts
+
+Use the [copyable scenario prompts](PROMPTS.md) for starting a feature, taking over another agent's work, checking claimed completion, fixing confirmed gaps, reviewing changes, choosing tests, and building verification procedures. Each skill has several examples with explicit editing authority and expected results.
+
 ## When to use each skill
 
 ### Rimuru Coordinator — choose and coordinate

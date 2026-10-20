@@ -26,7 +26,7 @@ Add `-g` for personal installation across projects. The installer also supports 
 
 ## Choose a skill
 
-Start with the [practical usage guide](GUIDE.md): everyday prompts, when each skill helps, what to expect, and how to adjust it from experience. Rimuru is the usual entry point; specialist skills are optional direct choices.
+Start with the [practical usage guide](GUIDE.md): everyday prompts, when each skill helps, what to expect, and how to adjust it from experience. Rimuru is the usual entry point; specialist skills are optional direct choices. The [scenario prompt collection](PROMPTS.md) provides copyable prompts for all eight skills, including work started or completed by another agent.
 
 These character-to-workflow matches are this project's interpretation of the [official character profiles](https://www.ten-sura.com/character).
 
