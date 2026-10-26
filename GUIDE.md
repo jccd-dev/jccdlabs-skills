@@ -60,6 +60,8 @@ Use the [copyable scenario prompts](PROMPTS.md) for starting a feature, taking o
 
 Large work may become a few complete slices, each with a deliverable, dependencies, and checks. A fresh session should understand a slice. Small work stays one task. Ticket publishing follows the project's tracker and your authorization; the external `to-tickets` skill is optional.
 
+For work continuing in another session, Benimaru defines the [compact continuation record](skills/benimaru-planner/SKILL.md#split-only-when-warranted). Rimuru and Kurobe keep that existing record current so the next agent can reuse relevant evidence. Ordinary completed tasks need no separate handoff document.
+
 **Adjust when:** questions are hard to answer, the agent assumes your suggested design is mandatory, or it creates tickets for ordinary work. Specify the missed decision or unnecessary split.
 
 ### Kurobe Implementer — build or fix
@@ -132,6 +134,16 @@ Ask for the first useful milestone before a large build. Split for reliable deli
 
 If a task is expensive, inspect where work went: genuine scope, new decisions, environment failures, repeated investigation, or unnecessary coordination. Skill length and elapsed time alone do not establish the cause.
 
+## Model preferences and host setup
+
+Loading a skill leaves the current model in place. Direct specialist use works without Rimuru: "Use Kurobe" applies its procedure to the current agent. When Rimuru delegates, its [delegation preferences](skills/rimuru-coordinator/references/delegation.md) map all eight skills to preferred work levels and distinguish Codex, Claude Code, OpenCode, and T3 Code. The reference is loaded only for delegated work.
+
+The default is to stay with the parent's provider. A Claude parent prefers the Claude lineup; a Codex parent prefers the Codex lineup. In T3 Code or OpenCode, identify the actual model provider separately from the host. Explicit task choices take priority, subject to available routes and pinned native settings. If an exact request cannot be satisfied, the agent reports it; a missing independent review remains a gap.
+
+For reliable execution settings, use your host's native agent configuration and keep it authoritative. The reference links official configuration documentation. Supported model IDs, effort levels, overrides, and task tools must be confirmed in the current environment. `agents/openai.yaml` controls skill UI and invocation policy; it is not where this collection sets execution models. Installing these skills changes no native agent profiles and enables no additional provider access.
+
+Keep small work in the parent and use one child when its separate contribution is useful. Select stronger reasoning for an identified difficult decision or consequential risk. Existing approved profiles can be used without repeated confirmation; changes outside approved provider or cost choices need a decision. These are usage preferences, not measured subscription savings or a requirement to delegate every phase.
+
 ## Make adjustments from experience
 
 | Kind of adjustment | Where it belongs |
@@ -140,6 +152,8 @@ If a task is expensive, inspect where work went: genuine scope, new decisions, e
 | A stable project rule, such as required checks or protected data | The project's existing instructions |
 | A repeated workflow mistake across projects | The relevant `SKILL.md` |
 | Display text or supported Codex invocation settings | That skill's `agents/openai.yaml` |
+| Shared delegation behavior and preferred work levels | Rimuru's `references/delegation.md` |
+| Exact execution models, effort, and role overrides | Your host's native agent configuration |
 
 For a skill change, record the task, expected behavior, actual behavior, and consequence. Change the narrowest relevant instruction. Compare similar tasks with the same model and starting state, including a case where extra process should be unnecessary. Keep a change only when outcomes support it; word matching and attractive formatting do not establish effectiveness.
 

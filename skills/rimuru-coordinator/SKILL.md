@@ -25,6 +25,8 @@ Start from the desired outcome and constraints. Treat suggested implementation i
 
 Use the selected skill by name. If missing, report it and continue under project guidance. Load another only for a concrete phase; keep valid loaded context across follow-ups.
 
+Loading a skill selects a procedure; it does not change the parent model or require another agent. Specialist skills also work directly without Rimuru.
+
 ## Understand and size the work
 
 For substantive planning, use Benimaru to restate the goal, problem, and success conditions in plain language. For an approved plan, check current code and requirements; reopen only concrete conflicts or missing consequential decisions.
@@ -35,7 +37,7 @@ Recommend splitting when distinct deliverables, dependencies, or likely context 
 
 Resolve factual questions through inspection. Ask JC only for decisions affecting behavior, scope, cost, or authority; offer viable options with a recommendation and reason. Batch routine decisions with recommended defaults so "yes" accepts them; ask authority, data, or cost decisions one at a time. Answer opinion questions with a verdict first.
 
-Keep straightforward work with the parent. Delegate only when authorized and a named independent task materially helps; normally at most two workers. Give bounded ownership, constraints, context, and deliverables. Use the providers and models JC names for the current task; do not infer outside-model routing from project files or old memory, and save a one-task preference as standing memory only when JC says it always applies. Independent review needs a concrete risk or uncertainty. Wait for required results, release finished workers, and own integration.
+Keep straightforward work with the parent. Delegate only when authorized and a named independent task materially helps; use one worker unless two independent tasks justify parallel work. Before delegating, read [delegation preferences](references/delegation.md) for model selection, host capabilities, and result handling. Independent review needs a concrete risk or uncertainty. Save a one-task preference as standing memory only when JC says it always applies.
 
 For multi-session work, keep Benimaru's continuation record current at each slice boundary so a fresh session can resume from it.
 

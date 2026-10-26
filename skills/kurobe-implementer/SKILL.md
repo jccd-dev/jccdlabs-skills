@@ -28,4 +28,6 @@ Fix failures caused by the change and rerun until checks pass or a concrete bloc
 
 ## Completion
 
+When unfinished work needs another session, update the existing continuation record using `benimaru-planner`'s handoff guidance. If unavailable, summarize the code state, completed work, checks, unresolved findings, and next action in the response.
+
 Finish with the implemented outcome, observed check results, and precise pending checks. If the change settled a decision that is hard to reverse, surprising without context, and a real trade-off, propose a one-paragraph ADR in the same change. Commits and live-system actions follow the authority already established for the task.

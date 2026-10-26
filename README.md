@@ -41,7 +41,7 @@ These character-to-workflow matches are this project's interpretation of the [of
 | [shuna-test-triage](skills/shuna-test-triage/SKILL.md) | Choose meaningful coverage and test scope | Shuna's careful craft and support | test-scope-triage |
 | [kaijin-verification-builder](skills/kaijin-verification-builder/SKILL.md) | Write and exercise a project verification procedure | Kaijin's workshop craftsmanship | jc-create-verification |
 
-Ask for a skill by its short or full name in ordinary text: "Use Kurobe to implement this change" or "Use rimuru-coordinator to choose the workflow." All eight descriptions include both names; no `$` or `/` prefix is required for model selection in a compatible harness. Use a request to apply the skill; asking what a skill does remains an explanation request.
+Ask for a skill by its short or full name in ordinary text: "Use Kurobe to implement this change" or "Use rimuru-coordinator to choose the workflow." All eight descriptions include both names; no `$` or `/` prefix is required for skill invocation in a compatible harness. Use a request to apply the skill; asking what a skill does remains an explanation request.
 
 Install the skills in a location your harness discovers. [Codex](https://learn.chatgpt.com/docs/build-skills) allows implicit invocation through `agents/openai.yaml`; [Claude Code](https://code.claude.com/docs/en/skills) allows model invocation by default; [OpenCode](https://opencode.ai/docs/skills/) lists skill names and descriptions for its agent to select through the `skill` tool. Other Agent Skills-compatible harnesses can use the same descriptions. Selection depends on the model and host settings; native skill selectors remain available when you need explicit loading.
 
@@ -49,7 +49,9 @@ Kurobe includes testing and reads Shuna before deciding coverage. TDD applies wh
 
 Benimaru's plans can be handed to Matt Pocock's [to-tickets](https://github.com/mattpocock/skills/blob/main/skills/engineering/to-tickets/SKILL.md) when you request ticket creation. This companion is optional; install it and follow its invocation and tracker setup requirements. Project tracker conventions and publishing permissions still apply.
 
-Install the whole collection for sibling procedures to be available. Individually installed skills have fallbacks for missing helpers. All eight allow model selection; Shuna uses Codex's default policy. The shared skill files use standard `name` and `description` fields, with no Claude-only invocation restrictions. Loading a skill does not expand the task's editing or execution authority.
+Install the whole collection for sibling procedures to be available. Individually installed skills have fallbacks for missing helpers. All eight allow model-initiated skill invocation; Shuna uses Codex's default policy. The shared skill files use standard `name` and `description` fields, with no Claude-only invocation restrictions. Loading a skill does not expand the task's editing or execution authority.
+
+Skills select procedures, not execution models. Rimuru's [delegation preferences](skills/rimuru-coordinator/references/delegation.md) favor the parent's provider and proportionate model effort when a separate agent helps. Native agent settings control execution; the collection does not install or modify them. See [model preferences and host setup](GUIDE.md#model-preferences-and-host-setup) for direct skill use and host differences.
 
 ## Update or remove
 
@@ -82,6 +84,8 @@ codex plugin add jccdlabs-skills@jccdlabs-skills
 The plugin supplies no connectors or extra permissions. Refresh its source with `codex plugin marketplace upgrade jccdlabs-skills`, then use your host's plugin update flow.
 
 ## Status
+
+Version 0.3.0 adds provider-aware model preferences for Rimuru's delegated work and compact continuation records for work spanning sessions. Native agent profiles remain authoritative; the package does not install execution-model settings. Routing decisions were checked with simulated scenarios; live cross-host execution remains untested.
 
 Initial publication: 2026-10-19. Packaging and installation checks are recorded in the GitHub release. These workflows still need representative project trials; installation compatibility does not establish engineering effectiveness.
 

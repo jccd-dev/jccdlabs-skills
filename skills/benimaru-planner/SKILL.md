@@ -31,7 +31,9 @@ Recommend an approach using existing patterns. Add dependencies or abstractions 
 
 Judge size from actual understanding: distinct deliverables, dependencies, and whether context or verification can remain reliable in one run. Small work needs a short plan. For larger work, propose the fewest complete, independently verifiable slices across relevant layers. State each slice's outcome, dependencies, and completion checks; make it understandable in a fresh session. Use existing tracker conventions when tickets are authorized. Matt's `to-tickets` can support an explicitly requested ticket workflow; it is not a prerequisite.
 
-When work spans sessions, write the spec where it can be resumed but does not become permanent repository documentation: the project's tracker, or `.scratch/<feature>/spec.md` when no tracker exists. Include the goal, success conditions, slices with dependencies, settled decisions, and a short continuation record (current slice, revision, reusable evidence). Describe behavior, not file paths or code. Remove or close it when the work ships. Recommend one fresh session per slice.
+When work spans sessions, write the spec where it can be resumed but does not become permanent repository documentation: the project's tracker, or `.scratch/<feature>/spec.md` when no tracker exists. Include the goal, success conditions, slices with dependencies, settled decisions, and a short continuation record. Describe planned behavior rather than prescribing file paths or code. Remove or close it when the work ships. Recommend one fresh session per slice.
+
+At a slice boundary or handoff, update the existing continuation record with the checked revision and relevant uncommitted changes, completed work/current slice, checks with results and targets, unresolved findings or decisions, and the next concrete action. Link existing evidence instead of copying logs; mark unrun checks and unknown state explicitly. Keep this a compact update, not a new document for every task. On resume, compare the recorded state with current code before reusing evidence.
 
 ## Record decisions
 

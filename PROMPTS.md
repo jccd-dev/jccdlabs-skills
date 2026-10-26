@@ -84,7 +84,37 @@ Recommend the smallest useful change and explain the tradeoff in plain language.
 Give me options where a decision matters; wait before implementation.
 ```
 
-**Expect:** appropriate routing, continuity, proportionate work, and clear evidence. If you request checking only, an implementation proposal should remain a proposal.
+### Use budget defaults
+
+```text
+Use rimuru-coordinator to implement [outcome].
+Keep straightforward work with the parent. When an independent task helps,
+use your delegation preferences within the current provider and approved profiles.
+Reuse relevant findings and checks; reserve stronger reasoning for concrete risks.
+```
+
+### Request one exact model assignment
+
+```text
+Use rimuru-coordinator for [outcome].
+Delegate the bounded read-only investigation of [question] to GPT-6 Luna
+at medium effort. Keep other work with the parent. If that exact route is
+unavailable, report it before substituting. Distinguish requested settings
+from confirmed execution settings.
+```
+
+### Stay with one provider
+
+```text
+Use rimuru-coordinator to implement [outcome].
+Use only [Claude / Codex] models. Prefer the available lineup for that provider;
+keep small work with the parent and respect native role settings.
+If delegation is unavailable, continue suitable work sequentially and report
+any missing independent review. Publishing and live-system actions keep their
+existing authorization requirements.
+```
+
+**Expect:** appropriate routing, continuity, proportionate work, and clear evidence. If you request checking only, an implementation proposal should remain a proposal. Model preferences do not switch the parent model or guarantee a host's execution settings.
 
 ## Benimaru Planner
 
@@ -360,7 +390,7 @@ ones. Demonstrate one representative safe journey; do not claim uncovered paths 
 | Work is expanding | "Return to [outcome]. Explain which extra changes are required and leave optional improvements for later." |
 | You approved a proposal | "Proceed with the recommended approach within the agreed scope." |
 | Checks found a defect | "Fix this confirmed gap, preserve unrelated behavior, then rerun affected checks." |
-| You need a handoff | "Record the current code state, completed work, evidence, unresolved decisions, and next action for a fresh agent." |
+| You need a handoff | "Update the existing continuation record with the checked revision and relevant uncommitted changes, completed work, check results and targets, unresolved findings or decisions, and next action for a fresh agent. Link evidence; mark unknown state and unrun checks." |
 | Review is looping | "Identify the unresolved issue and new evidence. Reassess if another pass would repeat settled findings." |
 
 Use specific outcomes rather than "make everything better." Avoid adding roles, ceremonies, or testing restrictions unless they serve this task. Keep the useful prompt short; add detail only when it changes a decision.
