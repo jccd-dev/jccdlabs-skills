@@ -85,7 +85,7 @@ The plugin supplies no connectors or extra permissions. Refresh its source with 
 
 ## Status
 
-Version 0.3.0 adds provider-aware model preferences for Rimuru's delegated work and compact continuation records for work spanning sessions. Native agent profiles remain authoritative; the package does not install execution-model settings. Routing decisions were checked with simulated scenarios; live cross-host execution remains untested.
+Version 0.3.1 makes Rimuru's phase procedures explicit, honors standing delegation instructions, and keeps questions about skipped procedures read-only. Rimuru and its delegation reference use 29% fewer words by removing duplicate guidance. Native agent profiles remain authoritative. Static instruction checks do not establish live cross-host behavior.
 
 Initial publication: 2026-10-19. Packaging and installation checks are recorded in the GitHub release. These workflows still need representative project trials; installation compatibility does not establish engineering effectiveness.
 

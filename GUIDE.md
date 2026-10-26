@@ -136,7 +136,7 @@ If a task is expensive, inspect where work went: genuine scope, new decisions, e
 
 ## Model preferences and host setup
 
-Loading a skill leaves the current model in place. Direct specialist use works without Rimuru: "Use Kurobe" applies its procedure to the current agent. When Rimuru delegates, its [delegation preferences](skills/rimuru-coordinator/references/delegation.md) map all eight skills to preferred work levels and distinguish Codex, Claude Code, OpenCode, and T3 Code. The reference is loaded only for delegated work.
+Loading a skill leaves the current model in place. Direct specialist use works without Rimuru: "Use Kurobe" applies its procedure to the current agent. Rimuru checks applicable standing delegation instructions before choosing inline or delegated work. Its [delegation preferences](skills/rimuru-coordinator/references/delegation.md) classify delegated work by complexity and distinguish Codex, Claude Code, OpenCode, and T3 Code. The reference is loaded only for delegated work.
 
 The default is to stay with the parent's provider. A Claude parent prefers the Claude lineup; a Codex parent prefers the Codex lineup. In T3 Code or OpenCode, identify the actual model provider separately from the host. Explicit task choices take priority, subject to available routes and pinned native settings. If an exact request cannot be satisfied, the agent reports it; a missing independent review remains a gap.
 

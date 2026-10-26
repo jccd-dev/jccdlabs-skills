@@ -7,11 +7,15 @@ description: Choose and coordinate development workflows. Use when the user requ
 
 ## Scope
 
-Be JC's entry point for this task and its follow-ups until completion or JC stops the mode. Coordinate the work without requiring JC to select the next skill.
+Coordinate this task and its follow-ups until completion or JC stops the mode. Select the next procedure yourself.
+
+Explanation and opinion questions stay read-only, including questions about skipped procedures. Explain from evidence; list pending work separately instead of running omitted steps, editing files, or launching agents.
 
 ## Select a workflow
 
-Start from the desired outcome and constraints. Treat suggested implementation ideas as proposals to evaluate unless JC marks them as requirements. Explanation and opinion questions remain read-only. A clear implementation request can proceed directly.
+Choose from the desired outcome and constraints. Evaluate suggested implementations unless JC makes them requirements. Clear implementation requests can proceed directly.
+
+Check approved plans against current code and requirements; reopen only concrete conflicts or missing consequential decisions.
 
 | Outcome | Procedure |
 | --- | --- |
@@ -23,26 +27,22 @@ Start from the desired outcome and constraints. Treat suggested implementation i
 | Decide coverage and test scope | shuna-test-triage |
 | Create a reusable verification procedure | kaijin-verification-builder |
 
-Use the selected skill by name. If missing, report it and continue under project guidance. Load another only for a concrete phase; keep valid loaded context across follow-ups.
+Before each concrete phase, read and follow its mapped skill unless already loaded and applicable. Briefly name it. Inline work still requires the procedure. If unavailable, report it and use its documented fallback or project guidance.
 
-Loading a skill selects a procedure; it does not change the parent model or require another agent. Specialist skills also work directly without Rimuru.
-
-## Understand and size the work
-
-For substantive planning, use Benimaru to restate the goal, problem, and success conditions in plain language. For an approved plan, check current code and requirements; reopen only concrete conflicts or missing consequential decisions.
-
-Recommend splitting when distinct deliverables, dependencies, or likely context loss make one run unreliable. Explain why and propose the fewest independently verifiable parts, their dependencies, and completion checks. File count alone is insufficient; small work stays one task. Use existing ticket conventions within task authority.
+Skill selection leaves the parent model unchanged and does not require another agent. Specialists also work without Rimuru.
 
 ## Coordinate efficiently
 
-Resolve factual questions through inspection. Ask JC only for decisions affecting behavior, scope, cost, or authority; offer viable options with a recommendation and reason. Batch routine decisions with recommended defaults so "yes" accepts them; ask authority, data, or cost decisions one at a time. Answer opinion questions with a verdict first.
+Inspect factual questions. Ask JC about consequential behavior, scope, cost, or authority choices, with options and a reasoned recommendation. Batch routine choices with recommended defaults; ask authority, data, or cost decisions one at a time. Give opinion verdicts first.
 
-Keep straightforward work with the parent. Delegate only when authorized and a named independent task materially helps; use one worker unless two independent tasks justify parallel work. Before delegating, read [delegation preferences](references/delegation.md) for model selection, host capabilities, and result handling. Independent review needs a concrete risk or uncertainty. Save a one-task preference as standing memory only when JC says it always applies.
+Before choosing inline or delegated execution, check applicable task and standing delegation instructions; reuse valid loaded context. Explicit standing delegation instructions authorize work within their scope. A model preference alone does not require delegation.
 
-For multi-session work, keep Benimaru's continuation record current at each slice boundary so a fresh session can resume from it.
+Otherwise, keep straightforward work with the parent. Delegate only when authorized and a named independent task materially helps. Read [delegation preferences](references/delegation.md) before dispatch. Independent review needs a concrete risk or uncertainty. Treat a one-task preference as standing only when JC says it always applies.
 
-Reuse valid findings and checks for the current code and target. Repeat only for changed code, failures, or a concrete evidence gap.
+Reuse findings and checks valid for the current code and target; repeat only for changes, failures, or an evidence gap.
 
 ## Completion
 
-Report the requested result, observed evidence, and remaining gaps. Continue authorized implementation after decisions are settled; a proposal requested for review stops before code changes.
+For multi-session work, update Benimaru's continuation record at each slice boundary.
+
+Report the result, observed evidence, and gaps. Continue authorized implementation after decisions settle; stop proposals requested for review before code changes.
