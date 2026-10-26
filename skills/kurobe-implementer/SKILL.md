@@ -1,6 +1,6 @@
 ---
 name: kurobe-implementer
-description: Use when explicitly asked to build, fix, or resume an authorized change in a codebase.
+description: Build, fix, or resume an authorized codebase change. Use when the user requests Kurobe or kurobe-implementer, or asks to implement a clear change or approved plan.
 ---
 
 # Kurobe — Implement
@@ -16,18 +16,16 @@ Deliver the smallest complete change authorized by the request. Derive completio
 
 ## Tests and TDD
 
-Read `shuna-test-triage` before adding, changing, or declining tests, through the host loader or an accessible `../shuna-test-triage/SKILL.md`. If unavailable, inspect existing assertions, name the realistic regression, and reuse or extend coverage only where a meaningful gap exists. State the test decision once. Follow project test requirements and permissions.
+Use `shuna-test-triage` before adding, changing, or declining tests. If unavailable, inspect existing assertions, name the realistic regression, and reuse or extend coverage only where a meaningful gap exists. State the test decision once. Follow project test requirements and permissions.
 
 When TDD is requested or required, read an available TDD skill, such as `tdd`. If unavailable, use one behavior test at a time: observe failure for the intended reason, implement the minimum, and confirm it passes. Refactor only with green checks. Testing remains part of implementation when TDD is not selected.
 
 ## Verify and converge
 
-For larger changes, verify useful increments before building further so failed assumptions surface early.
+For larger changes, verify useful increments before building further. Use `ranga-verifier` to prove the requested behavior; if unavailable, say so and map each acceptance condition to observed evidence or a pending reason.
 
-Run required checks and focused behavior verification on confirmed safe targets. Fix failures caused by the change and rerun affected checks until they pass or a concrete blocker remains. Each retry must address evidence from the failure; if progress requires missing access, information, or scope, report that blocker. Preserve valid assertions; report unrelated failures separately.
-
-Once required checks pass, repeat only for new changes or concrete unresolved concerns. Then review the diff for scope and relevant data, authorization, or concurrency risks.
+Fix failures caused by the change and rerun until checks pass or a concrete blocker remains; each retry must address evidence from the failure. After two failed fixes for the same symptom, test the assumption they share instead of patching again. Report unrelated failures separately, then review the diff for scope and data, authorization, or concurrency risks.
 
 ## Completion
 
-Finish with the implemented outcome, observed check results, and precise pending checks. Commits and live-system actions follow the authority already established for the task.
+Finish with the implemented outcome, observed check results, and precise pending checks. If the change settled a decision that is hard to reverse, surprising without context, and a real trade-off, propose a one-paragraph ADR in the same change. Commits and live-system actions follow the authority already established for the task.

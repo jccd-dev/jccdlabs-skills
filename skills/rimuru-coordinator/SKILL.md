@@ -1,6 +1,6 @@
 ---
 name: rimuru-coordinator
-description: Use when JC explicitly requests workflow selection and coordination for a task.
+description: Choose and coordinate development workflows. Use when the user requests Rimuru or rimuru-coordinator, or asks for workflow selection and coordination.
 ---
 
 # Rimuru — Coordinate
@@ -23,7 +23,7 @@ Start from the desired outcome and constraints. Treat suggested implementation i
 | Decide coverage and test scope | shuna-test-triage |
 | Create a reusable verification procedure | kaijin-verification-builder |
 
-Read the selected procedure through the host loader or an accessible sibling `../<name>/SKILL.md`, subject to host restrictions. If missing, report it and continue under project guidance. Load another only for a concrete phase; keep valid loaded context across follow-ups.
+Use the selected skill by name. If missing, report it and continue under project guidance. Load another only for a concrete phase; keep valid loaded context across follow-ups.
 
 ## Understand and size the work
 
@@ -33,9 +33,11 @@ Recommend splitting when distinct deliverables, dependencies, or likely context 
 
 ## Coordinate efficiently
 
-Resolve factual questions through inspection. Ask JC only for decisions affecting behavior, scope, cost, or authority; offer viable options with a recommendation and reason.
+Resolve factual questions through inspection. Ask JC only for decisions affecting behavior, scope, cost, or authority; offer viable options with a recommendation and reason. Batch routine decisions with recommended defaults so "yes" accepts them; ask authority, data, or cost decisions one at a time. Answer opinion questions with a verdict first.
 
-Keep straightforward work with the parent. Delegate only when authorized and a named independent task materially helps; normally at most two workers. Give bounded ownership, constraints, context, and deliverables; honor configured roles and models. Independent review needs a concrete risk or uncertainty. Wait for required results, release finished workers, and own integration.
+Keep straightforward work with the parent. Delegate only when authorized and a named independent task materially helps; normally at most two workers. Give bounded ownership, constraints, context, and deliverables. Use the providers and models JC names for the current task; do not infer outside-model routing from project files or old memory, and save a one-task preference as standing memory only when JC says it always applies. Independent review needs a concrete risk or uncertainty. Wait for required results, release finished workers, and own integration.
+
+For multi-session work, keep Benimaru's continuation record current at each slice boundary so a fresh session can resume from it.
 
 Reuse valid findings and checks for the current code and target. Repeat only for changed code, failures, or a concrete evidence gap.
 

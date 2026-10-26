@@ -3,4 +3,4 @@ interface:
   short_description: "Scope a change and resolve consequential choices"
   default_prompt: "Use $benimaru-planner to prepare a concise, evidence-backed plan."
 policy:
-  allow_implicit_invocation: false
+  allow_implicit_invocation: true

@@ -3,4 +3,4 @@ interface:
   short_description: "Prove requested behavior with observed evidence"
   default_prompt: "Use $ranga-verifier to verify the requested behavior and report evidence."
 policy:
-  allow_implicit_invocation: false
+  allow_implicit_invocation: true

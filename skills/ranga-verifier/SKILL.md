@@ -1,6 +1,6 @@
 ---
 name: ranga-verifier
-description: Use when explicitly asked to prove requested behavior with existing project checks or interactive evidence.
+description: Prove requested behavior with project checks or interactive evidence. Use when the user requests Ranga or ranga-verifier, or asks to verify existing work against requirements.
 ---
 
 # Ranga — Verify
@@ -17,7 +17,7 @@ Prove the requested behavior against acceptance conditions derived from the requ
 
 ## Evidence
 
-Record the checked code revision or working-tree state, target, and check output. State what the checks cannot establish.
+Record the checked code revision or working-tree state, target, and check output. State what the checks cannot establish. Keep repository, packaged-artifact, and real-host evidence separate, and name how the checked target differs from production.
 
 ## Completion
 
@@ -25,4 +25,4 @@ Stop after the required conditions have evidence. Repeat or broaden checks only 
 
 Report each condition as passed, failed, or pending with evidence or a precise blocker. Report persistent data created and material coverage limits.
 
-Use kaijin-verification-builder when the requested deliverable is a reusable project procedure. Missing setup leaves dependent conditions pending; describing a blocker does not verify them.
+Use kaijin-verification-builder when the requested deliverable is a reusable project procedure; recommend it when the same condition stays pending across verification rounds. Missing setup leaves dependent conditions pending; describing a blocker does not verify them.

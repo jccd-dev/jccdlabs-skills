@@ -1,6 +1,6 @@
 ---
 name: kaijin-verification-builder
-description: Use when explicitly asked to create or update a reusable verification skill for a specific project.
+description: Create or update reusable project verification skills. Use when the user requests Kaijin or kaijin-verification-builder, or needs a repeatable project verification procedure.
 ---
 
 # Kaijin — Create Verification
@@ -18,6 +18,12 @@ Create a reusable verification skill grounded in the project's actual environmen
 ## Feature coverage
 
 For complex projects, keep a small feature-to-check map of important behaviors, their checks, and remaining gaps. Reuse an existing map when available.
+
+Before handoff, see each new check fail against a deliberate safe break or a known-bad state; a check never seen failing proves nothing. Record the covered paths and the commit the procedure was last synced to.
+
+## Maintenance
+
+When updating an existing procedure, compare covered paths since its sync commit. Classify each check as in sync, updated, product bug, or blocked. Update the procedure from the code, not from the result; report product bugs instead of weakening checks, and keep procedure updates separate from product fixes.
 
 ## Safety and cleanup
 
