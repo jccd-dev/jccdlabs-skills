@@ -3,4 +3,4 @@ interface:
   short_description: "Find actionable defects in the supplied change"
   default_prompt: "Use $hakuro-reviewer to review this change for actionable defects."
 policy:
-  allow_implicit_invocation: false
+  allow_implicit_invocation: true

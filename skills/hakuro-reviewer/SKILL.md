@@ -1,6 +1,6 @@
 ---
 name: hakuro-reviewer
-description: Use when explicitly asked to find actionable defects in a code change or diff.
+description: Find actionable defects in a code change or diff. Use when the user requests Hakuro or hakuro-reviewer, or asks for a review of a supplied change.
 ---
 
 # Hakuro — Review

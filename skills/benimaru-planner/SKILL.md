@@ -1,6 +1,6 @@
 ---
 name: benimaru-planner
-description: Use when explicitly asked to scope a feature, compare designs, or prepare a technical proposal.
+description: Scope features, compare designs, and prepare technical proposals. Use when the user requests Benimaru or benimaru-planner, or needs a plan before implementation.
 ---
 
 # Benimaru — Plan
@@ -19,7 +19,7 @@ Separate requirements and constraints from suggested implementation ideas. Evalu
 
 Read the owner, callers, relevant coverage, and project requirements. Resolve factual questions from code or sources. Use an authorized disposable prototype only to settle consequential uncertainty.
 
-Ask one consequential decision at a time in plain language. When alternatives exist, offer 2–3 viable options, a recommended choice, and a short explanation of its effect. Ask about scope, behavior, cost, or authority; investigate technical facts yourself. Continue independent work while waiting.
+Ask about scope, behavior, cost, or authority; investigate technical facts yourself. Present routine decisions together, each with a recommended default, worded so "yes" accepts it, and invite overrides. Ask decisions about authority, data loss, or significant cost one at a time. When alternatives exist, offer 2–3 viable options, a recommended choice, and a short explanation of its effect. Continue independent work while waiting.
 
 ## Choose the smallest plan
 
@@ -31,8 +31,16 @@ Recommend an approach using existing patterns. Add dependencies or abstractions 
 
 Judge size from actual understanding: distinct deliverables, dependencies, and whether context or verification can remain reliable in one run. Small work needs a short plan. For larger work, propose the fewest complete, independently verifiable slices across relevant layers. State each slice's outcome, dependencies, and completion checks; make it understandable in a fresh session. Use existing tracker conventions when tickets are authorized. Matt's `to-tickets` can support an explicitly requested ticket workflow; it is not a prerequisite.
 
+When work spans sessions, write the spec where it can be resumed but does not become permanent repository documentation: the project's tracker, or `.scratch/<feature>/spec.md` when no tracker exists. Include the goal, success conditions, slices with dependencies, settled decisions, and a short continuation record (current slice, revision, reusable evidence). Describe behavior, not file paths or code. Remove or close it when the work ships. Recommend one fresh session per slice.
+
+## Record decisions
+
+Propose an ADR only for a decision that is hard to reverse, surprising without context, and the result of a real trade-off. Use the project's ADR location and format, or an available `domain-modeling` skill; default to `docs/adr/NNNN-slug.md`. A paragraph is enough. When a plan contradicts an existing ADR, name it and explain why reopening it is worthwhile.
+
 ## Verification and completion
 
 Derive completion conditions from the request. Identify the main failure risk, evidence that detects it, and recovery considerations when consequences justify them.
+
+When the change ships to users or hosts, include delivery conditions where relevant: installation, upgrade of existing users, the real target host, activation, and rollback. Probe uncertain host or platform capabilities early, before building on them.
 
 Finish with shared understanding, the recommended approach, and unresolved decisions. A proposal for review ends there; preserve implementation authorization already given for a combined request.

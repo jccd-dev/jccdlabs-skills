@@ -1,6 +1,6 @@
 ---
 name: shuna-test-triage
-description: Decide whether changed behavior needs new test coverage and choose the smallest scope that catches its realistic failure. Use before adding, changing, or deciding against tests.
+description: Decide whether changed behavior needs tests and choose the smallest meaningful scope. Use when the user requests Shuna or shuna-test-triage, or before adding, changing, or declining tests.
 ---
 
 # Shuna — Test Scope
@@ -30,7 +30,9 @@ Consider property tests when correctness depends on an invariant across many inp
 
 State once per behavior; group behaviors sharing the same decision:
 
-`Test decision: <reuse | extend | add | none>, <scope when relevant> — <failure caught or why new coverage adds no signal>`
+`Test decision: <reuse | extend | add | none>, <scope when relevant> — <failure caught or why new coverage adds no signal>; misses: <material blind spot, when one exists>`
+
+Reject a test that passes when the behavior breaks or fails when only internals change.
 
 Revise when evidence changes the decision. Confirm a bug test fails for the intended defect when safe and practical, then passes with the fix. Triage chooses coverage; the project's TDD procedure governs implementation order.
 

@@ -16,10 +16,10 @@ Install interactively and choose your skills and agents:
 npx skills add jccd-dev/jccdlabs-skills
 ```
 
-Install all eight for Codex and Claude Code in the current project:
+Install all eight for Codex, Claude Code, and OpenCode in the current project:
 
 ```sh
-npx skills add jccd-dev/jccdlabs-skills --skill '*' -a codex -a claude-code
+npx skills add jccd-dev/jccdlabs-skills --skill '*' -a codex -a claude-code -a opencode
 ```
 
 Add `-g` for personal installation across projects. The installer also supports Cursor, Gemini CLI, and other agents; see its [supported agents](https://github.com/vercel-labs/skills#supported-agents). No npm package for this repository is needed: `npx` runs the external `skills` installer, which reads this GitHub repository.
@@ -41,11 +41,15 @@ These character-to-workflow matches are this project's interpretation of the [of
 | [shuna-test-triage](skills/shuna-test-triage/SKILL.md) | Choose meaningful coverage and test scope | Shuna's careful craft and support | test-scope-triage |
 | [kaijin-verification-builder](skills/kaijin-verification-builder/SKILL.md) | Write and exercise a project verification procedure | Kaijin's workshop craftsmanship | jc-create-verification |
 
-In Codex, mention `$kurobe-implementer` to implement a change or `$rimuru-coordinator` to select a workflow. Other agents use their own skill selector or invocation syntax.
+Ask for a skill by its short or full name in ordinary text: "Use Kurobe to implement this change" or "Use rimuru-coordinator to choose the workflow." All eight descriptions include both names; no `$` or `/` prefix is required for model selection in a compatible harness. Use a request to apply the skill; asking what a skill does remains an explanation request.
+
+Install the skills in a location your harness discovers. [Codex](https://learn.chatgpt.com/docs/build-skills) allows implicit invocation through `agents/openai.yaml`; [Claude Code](https://code.claude.com/docs/en/skills) allows model invocation by default; [OpenCode](https://opencode.ai/docs/skills/) lists skill names and descriptions for its agent to select through the `skill` tool. Other Agent Skills-compatible harnesses can use the same descriptions. Selection depends on the model and host settings; native skill selectors remain available when you need explicit loading.
 
 Kurobe includes testing and reads Shuna before deciding coverage. TDD applies when requested or required; an installed `tdd` skill is optional, with a small red–green fallback included. Fixes continue through relevant checks until they pass or evidence identifies a concrete blocker. Existing coverage is reused where sufficient.
 
-Install the whole collection for sibling procedures to be available. Individually installed skills have fallbacks for missing helpers. Codex metadata preserves explicit invocation for the seven task workflows and normal discovery for Shuna. Invocation controls vary by host; other agents may automatically select skills by description.
+Benimaru's plans can be handed to Matt Pocock's [to-tickets](https://github.com/mattpocock/skills/blob/main/skills/engineering/to-tickets/SKILL.md) when you request ticket creation. This companion is optional; install it and follow its invocation and tracker setup requirements. Project tracker conventions and publishing permissions still apply.
+
+Install the whole collection for sibling procedures to be available. Individually installed skills have fallbacks for missing helpers. All eight allow model selection; Shuna uses Codex's default policy. The shared skill files use standard `name` and `description` fields, with no Claude-only invocation restrictions. Loading a skill does not expand the task's editing or execution authority.
 
 ## Update or remove
 

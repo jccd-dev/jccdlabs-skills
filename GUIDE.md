@@ -9,7 +9,7 @@ Describe the outcome, the problem, and real constraints. Let the agent recommend
 You do not need a long prompt. Add the details that matter:
 
 ```text
-Use $rimuru-coordinator.
+Use rimuru-coordinator.
 Outcome: let me find notes I recently worked on.
 Problem: I lose track of useful notes between sessions.
 Constraints: reuse existing search; no new dependency unless necessary.
@@ -18,18 +18,18 @@ First propose the simplest approach. Give me options for decisions I need to mak
 
 That request asks for a proposal. To authorize building from the start, say "Build this feature" and state its expected behavior. Planning is optional when the work is already clear.
 
-The `$skill-name` examples use Codex syntax. Use your host's skill selector or supported invocation syntax elsewhere. Skill loading and automatic selection vary by host; install the collection so its sibling procedures are available. These skills are procedures, not a requirement to launch separate agents.
+The examples use ordinary skill names, without `$` or `/`. You can also use the short character name, such as "Use Rimuru" or "Use Kaijin." Install the collection in your harness's supported skill location first. Codex, Claude Code, OpenCode, and other Agent Skills-compatible harnesses can select skills from their names and descriptions; host settings and model decisions still govern loading. Use a native skill selector when you need explicit loading. These skills are procedures, not a requirement to launch separate agents.
 
 ## Everyday use
 
 | Your situation | What to say | What to expect |
 | --- | --- | --- |
-| You know the outcome but need an approach | "Use $rimuru-coordinator. I want [outcome] because [problem]. Recommend the simplest approach and give me choices for consequential decisions." | A plain-language understanding, inspection of relevant code, and a recommendation. |
-| You want a proposal before implementation | "Use $benimaru-planner. Plan [outcome] first. Restate my goal and problem, explain your recommendation, and wait before editing code." | A reviewable plan; project code remains unchanged. |
-| You want the agent to build a clear feature | "Use $rimuru-coordinator to build [behavior]. Respect [constraints]. Ask only about decisions that affect the result." | The appropriate procedure and implementation, with meaningful checks. |
-| You approved a plan | "Use $kurobe-implementer. Implement [plan reference]. Reassess only concrete conflicts; reuse settled decisions." | Implementation without a fresh planning interview. |
-| Work is unfinished | "Use $rimuru-coordinator to resume [task]. Here is the current state, completed checks, and remaining work: [details]." | Reuse of valid findings; checks repeated only when needed. |
-| The task may span several sessions | "Use $benimaru-planner. Assess the actual scope. If one run would be unreliable, recommend the fewest independently verifiable parts." | A justified breakdown, dependencies, and completion conditions. |
+| You know the outcome but need an approach | "Use rimuru-coordinator. I want [outcome] because [problem]. Recommend the simplest approach and give me choices for consequential decisions." | A plain-language understanding, inspection of relevant code, and a recommendation. |
+| You want a proposal before implementation | "Use benimaru-planner. Plan [outcome] first. Restate my goal and problem, explain your recommendation, and wait before editing code." | A reviewable plan; project code remains unchanged. |
+| You want the agent to build a clear feature | "Use rimuru-coordinator to build [behavior]. Respect [constraints]. Ask only about decisions that affect the result." | The appropriate procedure and implementation, with meaningful checks. |
+| You approved a plan | "Use kurobe-implementer. Implement [plan reference]. Reassess only concrete conflicts; reuse settled decisions." | Implementation without a fresh planning interview. |
+| Work is unfinished | "Use rimuru-coordinator to resume [task]. Here is the current state, completed checks, and remaining work: [details]." | Reuse of valid findings; checks repeated only when needed. |
+| The task may span several sessions | "Use benimaru-planner. Assess the actual scope. If one run would be unreliable, recommend the fewest independently verifiable parts." | A justified breakdown, dependencies, and completion conditions. |
 | The agent is drifting | "Return to [requested outcome]. Explain why the additional work is necessary, and leave optional improvements for later." | A scope correction and a clear next action. |
 
 After a proposal, "Proceed with the recommended approach" authorizes implementation within the agreed scope. You do not need to choose Kurobe yourself when Rimuru is coordinating.
@@ -44,7 +44,7 @@ Use the [copyable scenario prompts](PROMPTS.md) for starting a feature, taking o
 
 **Use when:** your task may need planning, implementation, diagnosis, or verification and you want the agent to manage those transitions.
 
-**Example:** "Use $rimuru-coordinator to add saved search filters. First understand the outcome, then build the simplest version using our existing search."
+**Example:** "Use rimuru-coordinator to add saved search filters. First understand the outcome, then build the simplest version using our existing search."
 
 **Expected result:** the agent selects the needed procedure, asks understandable questions, completes authorized work, and reports evidence. Simple work stays with the parent; delegation needs a concrete benefit and authorization.
 
@@ -54,7 +54,7 @@ Use the [copyable scenario prompts](PROMPTS.md) for starting a feature, taking o
 
 **Use when:** the desired result or approach needs discussion, choices have meaningful tradeoffs, or you want a proposal before code changes.
 
-**Example:** "Use $benimaru-planner. I want recurring reminders but have not chosen how they should work. Restate the goal and problem, then show viable options and your recommendation."
+**Example:** "Use benimaru-planner. I want recurring reminders but have not chosen how they should work. Restate the goal and problem, then show viable options and your recommendation."
 
 **Expected result:** a brief statement of your goal, problem, and success conditions; grounded options for important decisions; the smallest workable plan and its verification approach. Clear understanding allows investigation to continue without another approval round.
 
@@ -66,7 +66,7 @@ Large work may become a few complete slices, each with a deliverable, dependenci
 
 **Use when:** the change is clear or its plan is approved. Kurobe already includes test selection and verification; a separate verifier is not required for every change.
 
-**Example:** "Use $kurobe-implementer to implement the approved saved-filter plan. Preserve existing search behavior and verify the changed path."
+**Example:** "Use kurobe-implementer to implement the approved saved-filter plan. Preserve existing search behavior and verify the changed path."
 
 **Expected result:** a complete change at the owning boundary, reuse of existing architecture, a meaningful test decision, and observed checks. Failures caused by the change are fixed until checks pass or a concrete blocker remains.
 
@@ -78,7 +78,7 @@ For test-first work, add "Use TDD." An available `tdd` skill can guide the seque
 
 **Use when:** something is broken, slow, or intermittent and you need the cause understood before deciding on a fix.
 
-**Example:** "Use $soei-investigator. Saving sometimes creates duplicate notes after a connection retry. Find the cause and smallest fix; keep this investigation read-only."
+**Example:** "Use soei-investigator. Saving sometimes creates duplicate notes after a connection retry. Find the cause and smallest fix; keep this investigation read-only."
 
 **Expected result:** observed symptoms, a safe reproduction or existing evidence, a supported cause with uncertainty stated, and the next useful check or fix.
 
@@ -88,7 +88,7 @@ For test-first work, add "Use TDD." An available `tdd` skill can guide the seque
 
 **Use when:** you have a diff, branch, or commit range to review. Give it a comparison base when available.
 
-**Example:** "Use $hakuro-reviewer to review this branch against main for defects introduced by the saved-filter change. Keep the review read-only."
+**Example:** "Use hakuro-reviewer to review this branch against main for defects introduced by the saved-filter change. Keep the review read-only."
 
 **Expected result:** actionable findings with severity, location, trigger, consequence, and evidence, or a clear statement that no defects were found. Later review focuses on fixes and affected behavior; resolved findings need new evidence to reopen.
 
@@ -98,7 +98,7 @@ For test-first work, add "Use TDD." An available `tdd` skill can guide the seque
 
 **Use when:** you are unsure whether a change needs new tests or which test scope can catch its realistic failure. Kurobe normally reads this procedure itself.
 
-**Example:** "Use $shuna-test-triage. Does this filter change have a coverage gap? Inspect existing assertions and recommend reuse, extension, a new test, or no new test."
+**Example:** "Use shuna-test-triage. Does this filter change have a coverage gap? Inspect existing assertions and recommend reuse, extension, a new test, or no new test."
 
 **Expected result:** one explained test decision, the failure it catches, and the smallest faithful scope. New tests are justified by a gap; skipping a new test still requires appropriate verification.
 
@@ -108,7 +108,7 @@ For test-first work, add "Use TDD." An available `tdd` skill can guide the seque
 
 **Use when:** work already exists and you want evidence that it meets the request, without authorizing repairs.
 
-**Example:** "Use $ranga-verifier to verify that filters survive reload and remain private to their owner. Use the safe local target and report gaps; do not modify application code."
+**Example:** "Use ranga-verifier to verify that filters survive reload and remain private to their owner. Use the safe local target and report gaps; do not modify application code."
 
 **Expected result:** passed, failed, or pending conditions tied to the checked code state, target, and actual output. A build alone does not establish that the user journey works.
 
@@ -118,7 +118,7 @@ For test-first work, add "Use TDD." An available `tdd` skill can guide the seque
 
 **Use when:** the project repeatedly needs the same verification workflow and lacks a clear, reusable procedure. A one-off check can use Ranga.
 
-**Example:** "Use $kaijin-verification-builder to document how to verify saved filters using our existing harness, disposable data, and local app. Exercise one representative journey."
+**Example:** "Use kaijin-verification-builder to document how to verify saved filters using our existing harness, disposable data, and local app. Exercise one representative journey."
 
 **Expected result:** a project verification skill with real commands, prerequisites, observable checks, evidence, and cleanup. Complex projects may need a small feature-to-check map. Unsupported execution is reported as unverified.
 
@@ -145,10 +145,10 @@ For a skill change, record the task, expected behavior, actual behavior, and con
 
 Edit the maintained files in `skills/<name>/SKILL.md`, review, commit, and push. Update installed copies separately. Avoid editing a managed installed copy as the only source because an update may replace it.
 
-For the workflow changes in v0.1.2:
+For the workflow and plain-name invocation changes in v0.2.0:
 
 ```sh
-npx skills update rimuru-coordinator benimaru-planner
+npx skills update rimuru-coordinator benimaru-planner kurobe-implementer soei-investigator hakuro-reviewer ranga-verifier shuna-test-triage kaijin-verification-builder
 ```
 
 Select the matching installation scope when prompted; add `-g` to target global installs. For Codex plugin installations, use the plugin update flow instead. See [installation and update instructions](README.md#update-or-remove).
