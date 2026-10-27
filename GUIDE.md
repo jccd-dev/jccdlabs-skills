@@ -58,7 +58,7 @@ Use the [copyable scenario prompts](PROMPTS.md) for starting a feature, taking o
 
 **Expected result:** a brief statement of your goal, problem, and success conditions; grounded options for important decisions; the smallest workable plan and its verification approach. Clear understanding allows investigation to continue without another approval round.
 
-Large work may become a few complete slices, each with a deliverable, dependencies, and checks. A fresh session should understand a slice. Small work stays one task. Ticket publishing follows the project's tracker and your authorization; the external `to-tickets` skill is optional.
+Large work may become a few complete slices, each with a deliverable, dependencies, and checks. A fresh session should understand a slice. Small work stays one task. For Matt's `to-spec`, Benimaru prepares agreed decisions and candidate test seams; `to-spec` synthesizes and publishes the spec and confirms seams. Benimaru preserves confirmed seams and their provenance in the existing handoff for ticket sessions. `to-tickets` owns approval and publishing of its breakdown. JC invokes these optional companions under their host invocation policy; publishing requires authorization.
 
 For work continuing in another session, Benimaru defines the [compact continuation record](skills/benimaru-planner/SKILL.md#split-only-when-warranted). Rimuru and Kurobe keep that existing record current so the next agent can reuse relevant evidence. Ordinary completed tasks need no separate handoff document.
 
@@ -70,9 +70,9 @@ For work continuing in another session, Benimaru defines the [compact continuati
 
 **Example:** "Use kurobe-implementer to implement the approved saved-filter plan. Preserve existing search behavior and verify the changed path."
 
-**Expected result:** a complete change at the owning boundary, reuse of existing architecture, a meaningful test decision, and observed checks. Failures caused by the change are fixed until checks pass or a concrete blocker remains.
+**Expected result:** a complete change at the owning boundary, reuse of existing architecture, a meaningful test decision, and observed checks. Failures caused by the change are fixed until checks pass or a concrete blocker remains. Authorized shared integration-branch batches may defer expected cross-batch failures to the final integration ticket.
 
-For test-first work, add "Use TDD." An available `tdd` skill can guide the sequence; Kurobe includes a fallback. Shuna decides what coverage is useful.
+For behavior work from a spec or tickets, Kurobe defaults to TDD at explicitly confirmed public seams. It loads an available `tdd` skill or uses its fallback: one behavioral test red for the right reason, then minimal green. Shuna decides what coverage is useful; an existing failing regression can provide red. Claim a cycle only when the intended red before implementation and green afterward were observed. A justified no-test decision reports its checks. Direct small work follows project requirements or an explicit TDD request.
 
 **Adjust when:** it adds speculative abstractions, skips relevant checks, weakens assertions, or repeatedly retries without new evidence. Identify the actual mismatch with the request.
 

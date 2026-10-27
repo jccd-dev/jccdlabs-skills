@@ -187,14 +187,23 @@ Inspect this state and complete only the named slice. Verify its outcome and
 record the result and next action so another agent can continue the larger task.
 ```
 
+### Implement a ticket
+
+```text
+Use kurobe-implementer to implement [ticket reference or local ticket file].
+The approved spec and explicitly confirmed test seams are [references, if known].
+Check blockers and implement this ticket when it is ready. Preserve the parent
+issue and follow established authority for tracker updates and commits.
+```
+
 ### Use TDD for changed behavior
 
 ```text
 Use kurobe-implementer with TDD for [behavior].
 Use an available tdd skill or the implementation skill's fallback.
-Choose meaningful coverage first. Work one behavior at a time: observe the test
-fail for the intended reason, implement the minimum, and confirm it passes.
-Refactor with green checks; avoid tests that merely mirror the implementation.
+Choose meaningful coverage and confirm public test seams first. Work one behavior
+at a time: observe the test fail for the intended reason, implement the minimum,
+and confirm it passes. Refactor during review; test observable behavior.
 ```
 
 **Expect:** the authorized behavior, focused changes, and observed verification. Optional cleanup and hypothetical flexibility should stay outside the change.
