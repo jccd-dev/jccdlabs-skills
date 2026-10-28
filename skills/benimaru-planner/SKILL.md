@@ -7,19 +7,25 @@ description: Scope features, compare designs, and prepare technical proposals. U
 
 ## Scope
 
-Create shared understanding and a concrete, reviewable plan. Keep project code read-only unless implementation is already authorized.
+Create shared understanding, resolve consequential choices, and prepare a reviewable plan in the conversation. For an analysis or critique request, deliver the assessment without forcing an implementation plan. Keep project code read-only unless implementation is already authorized.
+
+Creating or updating specs, tickets, tracker entries, or planning files requires an explicit request; invoking Benimaru or approving a plan alone does not authorize those artifacts. Honor earlier requests and use the relevant authoring workflow within established authority.
 
 ## State the understanding
 
-At the start of substantive planning, restate in your own words: the outcome JC wants, the problem it solves, and observable success. Mark assumptions clearly. Do this once; revise only when understanding changes. A clear goal permits continued investigation without a confirmation round.
+At the start of substantive planning, briefly restate in your own words: the outcome JC wants, the problem it solves, and observable success. Mark assumptions and unknowns clearly. Do this once; revise only when understanding changes. A straightforward task may need only one sentence; an accurate restatement needs no confirmation round.
 
 Separate requirements and constraints from suggested implementation ideas. Evaluate suggestions against the goal; explain a simpler approach or concrete conflict when supported by evidence. Reuse an approved plan and settled decisions when resuming.
 
 ## Investigate and clarify
 
-Read the owner, callers, relevant coverage, and project requirements. Resolve factual questions from code or sources. Use an authorized disposable prototype only to settle consequential uncertainty.
+Read the relevant owner, callers, coverage, and project requirements. Resolve factual questions from code or sources. Use an authorized disposable prototype only to settle consequential uncertainty.
 
-Ask about scope, behavior, cost, or authority; investigate technical facts yourself. Present routine decisions together, each with a recommended default, worded so "yes" accepts it, and invite overrides. Ask decisions about authority, data loss, or significant cost one at a time. When alternatives exist, offer 2–3 viable options, a recommended choice, and a short explanation of its effect. Continue independent work while waiting.
+Before recommending an approach, check whether an unanswered question could materially change it, its scope, or its main risks. Ask JC about intent, scope, behavior, cost, or authority that evidence cannot resolve. Explain why a question matters when its consequence is not obvious. Group related routine questions; ask decisions about authority, data loss, or significant cost one at a time. Use neutral questions while priorities are unclear, and offer viable options or recommended defaults when evidence supports them.
+
+While clarifying, share verified discoveries and label hypotheses or conditional options. Continue independent investigation while waiting, but withhold recommendations that depend on an unanswered consequential question. Proceed when remaining unknowns would not materially change the approach, scope, or main risks; use existing patterns for routine choices. Clear requests need no interview.
+
+Reuse settled answers. Reopen a decision only for a concrete conflict or new evidence, explaining what changed and revising the affected part of the plan.
 
 ## Choose the smallest plan
 
@@ -27,26 +33,18 @@ Map affected ownership, contracts, invariants, and boundaries. For demonstrated 
 
 Recommend an approach using existing patterns. Add dependencies or abstractions only for current requirements the existing code cannot handle clearly. Include affected areas, consequential alternatives, and relevant data or migration effects.
 
-For a planned `to-spec` handoff, settle consequential product and implementation decisions in the conversation, reusing decisions already made rather than interviewing again. Identify candidate public test seams, preferring existing, highest useful seams; note what each catches and misses and relevant test prior art. Ask for the initial spec's Testing Decisions to name confirmed public seams and their explicit approval provenance (who and when, or a stable confirmation reference). JC invokes `to-spec` under its host invocation policy; it owns spec synthesis, seam confirmation, and publishing. Publishing still requires authority.
+Derive completion conditions from the request. Identify the main failure risk, useful verification evidence, and recovery considerations when consequences justify them. Include installation, upgrade, activation, or rollback conditions when relevant; investigate uncertain host capabilities before relying on them.
 
 ## Split only when warranted
 
-Judge size from actual understanding: distinct deliverables, dependencies, and whether context or verification can remain reliable in one run. Small work needs a short plan. For larger work, propose the fewest complete, independently verifiable slices across relevant layers. State each slice's outcome, dependencies, and completion checks; make it understandable in a fresh session. When using Matt's `to-tickets`, hand over the agreed plan; it owns breakdown approval and publishing. Follow tracker conventions and publishing authority. Neither companion is a prerequisite for direct small work.
+Judge size from actual understanding: distinct deliverables, dependencies, and whether context or verification can remain reliable in one run. Small work needs a short plan. For larger work, propose the fewest complete, independently verifiable parts across relevant layers. State each part's outcome, dependencies, and completion checks. Keep this at planning depth; ticket authoring and approval belong to the ticket workflow.
 
-When work spans sessions, keep a resumable plan in the project's tracker or `.scratch/<feature>/spec.md` when no tracker exists. When `to-spec` will publish the spec, hand over the decisions rather than creating a competing spec. Otherwise include the goal, success conditions, slices with dependencies, settled decisions, and a short continuation record. Describe planned behavior rather than prescribing file paths or code. Remove or close it when the work ships. Recommend one fresh session per slice.
+When durable detail would help, suggest `to-spec`; when separate deliverables or dependencies warrant tickets, suggest `to-tickets`. Briefly explain the value once. When JC requests either workflow, carry forward that request and the settled decisions without asking for permission again. Invocation, synthesis, confirmation, breakdown, and publishing procedures stay in those skills. Neither is a prerequisite for small work.
 
-Preserve explicitly confirmed public seams and their approval provenance in the existing plan, spec, or continuation record. Identify who confirmed which seams and where; a proposed seam, module name, generic spec approval, or ready label is not confirmation. Supply the reference for JC's `to-tickets` handoff and ensure each authorized ticket points to it, since companion templates may omit it. Use existing authorized documents or references; do not mutate a parent issue without authority or create a redundant spec. If provenance or the ticket reference cannot be recorded, report the missing durable handoff. JC invokes `to-tickets` under its host invocation policy.
+## Finish the planning request
 
-At a slice boundary or handoff, update the existing continuation record with the checked revision and relevant uncommitted changes, completed work/current slice, checks with results and targets, unresolved findings or decisions, and the next concrete action. Link existing evidence instead of copying logs; mark unrun checks and unknown state explicitly. Keep this a compact update, not a new document for every task. On resume, compare the recorded state with current code before reusing evidence.
+Present the assessment or recommended approach with its reasons, consequential alternatives, affected areas, relevant risks and checks, and any unresolved decisions. Scale detail to the task rather than filling a spec template.
 
-## Record decisions
+Propose an ADR only for a decision that is hard to reverse, surprising without context, and the result of a real trade-off. When a plan contradicts an existing ADR, name it and explain why reopening it is worthwhile.
 
-Propose an ADR only for a decision that is hard to reverse, surprising without context, and the result of a real trade-off. Use the project's ADR location and format, or an available `domain-modeling` skill; default to `docs/adr/NNNN-slug.md`. A paragraph is enough. When a plan contradicts an existing ADR, name it and explain why reopening it is worthwhile.
-
-## Verification and completion
-
-Derive completion conditions from the request. Identify the main failure risk, evidence that detects it, and recovery considerations when consequences justify them.
-
-When the change ships to users or hosts, include delivery conditions where relevant: installation, upgrade of existing users, the real target host, activation, and rollback. Probe uncertain host or platform capabilities early, before building on them.
-
-Finish with shared understanding, the recommended approach, and unresolved decisions. A proposal for review ends there; preserve implementation authorization already given for a combined request.
+A proposal for review ends in the conversation. Preserve implementation authorization already given for a combined request; implementation and session-progress tracking belong to their respective workflows.

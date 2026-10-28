@@ -126,9 +126,9 @@ Use Benimaru when understanding or choices are unresolved. It should restate you
 Use benimaru-planner.
 I want [outcome] because [problem]. Constraints: [limits].
 Restate my goal, the problem, and what success would look like.
-Inspect the relevant code and recommend the smallest approach. Ask one important
-decision at a time with viable options, your recommendation, and its reason.
-Keep project code unchanged.
+Inspect the relevant code. Clarify unanswered choices that could materially
+change the approach before recommending it; skip questions the evidence answers.
+Explain why each question matters. Keep the plan in this conversation.
 ```
 
 ### Assess an existing plan or suggested approach

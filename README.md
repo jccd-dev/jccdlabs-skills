@@ -47,7 +47,7 @@ Install the skills in a location your harness discovers. [Codex](https://learn.c
 
 Kurobe uses Shuna to decide coverage. For behavior work from a spec or tickets, TDD is the default: confirm public test seams, then work one red–green behavior at a time. An available `tdd` skill guides the loop; Kurobe includes a fallback. Existing coverage is reused where sufficient, with no claim of a red–green cycle when none occurred. Direct small work follows project requirements and any requested TDD procedure.
 
-Benimaru can prepare decisions and candidate test seams for Matt Pocock's `to-spec`, then hand the agreed plan or spec to [to-tickets](https://github.com/mattpocock/skills/blob/main/skills/engineering/to-tickets/SKILL.md). Those companions own spec synthesis and ticket breakdown respectively; Kurobe can implement an authorized, unblocked ticket. JC invokes the companions under their host invocation policy. Install them and follow their tracker setup requirements. Publishing permissions still apply.
+Benimaru resolves consequential questions before recommending a plan in the conversation. It can suggest Matt Pocock's `to-spec` or [to-tickets](https://github.com/mattpocock/skills/blob/main/skills/engineering/to-tickets/SKILL.md) when useful; those companions own spec synthesis, test-seam confirmation, ticket breakdown, and publishing. Invoking Benimaru or approving its plan does not authorize artifact creation. JC invokes the companions under their host invocation policy and established authority. Install them and follow their tracker setup requirements. Kurobe can implement an authorized, unblocked ticket.
 
 Install the whole collection for sibling procedures to be available. Individually installed skills have fallbacks for missing helpers. All eight allow model-initiated skill invocation; Shuna uses Codex's default policy. The shared skill files use standard `name` and `description` fields, with no Claude-only invocation restrictions. Loading a skill does not expand the task's editing or execution authority.
 
@@ -85,7 +85,7 @@ The plugin supplies no connectors or extra permissions. Refresh its source with 
 
 ## Status
 
-Version 0.3.1 makes Rimuru's phase procedures explicit, honors standing delegation instructions, and keeps questions about skipped procedures read-only. Rimuru and its delegation reference use 29% fewer words by removing duplicate guidance. Native agent profiles remain authoritative. Static instruction checks do not establish live cross-host behavior.
+Version 0.4.1 keeps Benimaru focused on conversational planning: clarify consequential unknowns before recommending, retain the goal/problem/success restatement, and leave spec and ticket procedures to their companion skills. Planning artifacts require an explicit request. Session-handoff guidance now belongs to Rimuru. Six conversational scenarios, metadata parsing, local links, and diff formatting were checked; these do not establish live cross-host behavior.
 
 Initial publication: 2026-10-19. Packaging and installation checks are recorded in the GitHub release. These workflows still need representative project trials; installation compatibility does not establish engineering effectiveness.
 

@@ -54,15 +54,15 @@ Use the [copyable scenario prompts](PROMPTS.md) for starting a feature, taking o
 
 **Use when:** the desired result or approach needs discussion, choices have meaningful tradeoffs, or you want a proposal before code changes.
 
-**Example:** "Use benimaru-planner. I want recurring reminders but have not chosen how they should work. Restate the goal and problem, then show viable options and your recommendation."
+**Example:** "Use benimaru-planner. I want recurring reminders but have not chosen how they should work. Restate the goal and problem, investigate, and clarify choices that could change the approach before recommending a plan."
 
-**Expected result:** a brief statement of your goal, problem, and success conditions; grounded options for important decisions; the smallest workable plan and its verification approach. Clear understanding allows investigation to continue without another approval round.
+**Expected result:** a brief statement of your goal, problem, and success conditions; investigation and focused questions where answers could change the approach; then grounded options and the smallest workable plan with relevant checks. Clear requests need no interview. Discoveries can inform clarification, while recommendations dependent on unanswered consequential questions wait. Analysis-only requests receive an assessment rather than a forced implementation plan.
 
-Large work may become a few complete slices, each with a deliverable, dependencies, and checks. A fresh session should understand a slice. Small work stays one task. For Matt's `to-spec`, Benimaru prepares agreed decisions and candidate test seams; `to-spec` synthesizes and publishes the spec and confirms seams. Benimaru preserves confirmed seams and their provenance in the existing handoff for ticket sessions. `to-tickets` owns approval and publishing of its breakdown. JC invokes these optional companions under their host invocation policy; publishing requires authorization.
+Large work may need a few independently verifiable parts with outcomes, dependencies, and checks; small work stays one task. Planning stays in the conversation. Benimaru may suggest Matt's `to-spec` or `to-tickets` when useful, leaving their synthesis, confirmation, breakdown, and publishing procedures to those skills. Invoking Benimaru or approving a plan does not authorize creating or updating specs, tickets, or planning files. Earlier explicit requests still count; JC invokes the companions under their host invocation policy and established authority.
 
-For work continuing in another session, Benimaru defines the [compact continuation record](skills/benimaru-planner/SKILL.md#split-only-when-warranted). Rimuru and Kurobe keep that existing record current so the next agent can reuse relevant evidence. Ordinary completed tasks need no separate handoff document.
+During authorized implementation, Rimuru defines the [compact continuation record](skills/rimuru-coordinator/SKILL.md#completion), and Kurobe follows that guidance when work needs another session. Reuse an existing authorized record, or provide the handoff in the response when durable writing is not authorized. Ordinary completed tasks need no separate handoff document.
 
-**Adjust when:** questions are hard to answer, the agent assumes your suggested design is mandatory, or it creates tickets for ordinary work. Specify the missed decision or unnecessary split.
+**Adjust when:** it recommends before resolving a consequential question, repeats settled questions, assumes your suggested design is mandatory, or creates unrequested planning artifacts. Specify the missed decision or unnecessary step.
 
 ### Kurobe Implementer — build or fix
 

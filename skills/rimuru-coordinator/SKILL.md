@@ -43,6 +43,6 @@ Reuse findings and checks valid for the current code and target; repeat only for
 
 ## Completion
 
-For multi-session work, update Benimaru's continuation record at each slice boundary.
+For authorized multi-session implementation, keep a compact continuation record at slice boundaries or handoff. Reuse the existing authorized record; if none exists and durable writing is not authorized, provide the handoff in the response. Include the checked revision and relevant uncommitted changes, completed work/current slice, checks with results and targets, unresolved findings or decisions, and the next action. Preserve explicitly confirmed public test seams and their confirmation references. Link evidence rather than copying logs; mark unrun checks and unknown state. On resume, compare the record with current code before reusing evidence.
 
 Report the result, observed evidence, and gaps. Continue authorized implementation after decisions settle; stop proposals requested for review before code changes.
