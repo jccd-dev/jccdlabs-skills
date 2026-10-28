@@ -85,6 +85,8 @@ The plugin supplies no connectors or extra permissions. Refresh its source with 
 
 ## Status
 
+Version 0.4.2 makes Hakuro's security review explicit at affected trust boundaries: authentication and authorization bypasses, injection, unsafe input handling, secret exposure, and sensitive-data leaks. Findings remain evidence-backed and tied to the supplied change. Metadata parsing and diff formatting were checked; live reviewer behavior remains untested.
+
 Version 0.4.1 keeps Benimaru focused on conversational planning: clarify consequential unknowns before recommending, retain the goal/problem/success restatement, and leave spec and ticket procedures to their companion skills. Planning artifacts require an explicit request. Session-handoff guidance now belongs to Rimuru. Six conversational scenarios, metadata parsing, local links, and diff formatting were checked; these do not establish live cross-host behavior.
 
 Initial publication: 2026-10-19. Packaging and installation checks are recorded in the GitHub release. These workflows still need representative project trials; installation compatibility does not establish engineering effectiveness.
