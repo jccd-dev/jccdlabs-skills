@@ -1,6 +1,6 @@
 interface:
   display_name: "Benimaru — Plan"
-  short_description: "Scope a change and resolve consequential choices"
+  short_description: "Agree goal and problem, ask decisions with choices, then plan"
   default_prompt: "Use $benimaru-planner to prepare a concise, evidence-backed plan."
 policy:
   allow_implicit_invocation: true

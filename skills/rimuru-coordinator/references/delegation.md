@@ -4,7 +4,7 @@ Apply task and explicit standing delegation instructions before these model pref
 
 ## Select a model
 
-Default to the parent's provider unless JC selects another. Distinguish host from provider: T3 Code running Claude is a T3 host with a Claude provider.
+Default to the parent's provider unless JC selects another in the current conversation. Distinguish host from provider: T3 Code running Claude is a T3 host with a Claude provider. In Claude Code or the Claude desktop app, never route work to another provider (Codex, GPT, Gemini, `codex exec`) unless JC asks for it in that conversation; in T3 Code, cross-provider `delegate_task` is expected.
 
 Use explicit model and effort instructions first, then a compatible configured role, then the table. Keep native profiles unchanged; pinned settings may override invocation arguments. If exact requested settings are unavailable or conflict with provider restrictions, leave that assignment pending for JC's decision and continue independent authorized work. For an unavailable preference, use the parent where suitable and disclose the fallback. Resolve material cost changes before dispatch.
 

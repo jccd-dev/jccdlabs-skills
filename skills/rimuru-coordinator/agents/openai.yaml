@@ -1,6 +1,6 @@
 interface:
   display_name: "Rimuru — Coordinate"
-  short_description: "Choose a focused workflow for the current task"
+  short_description: "Stay on for a task and pick each next phase"
   default_prompt: "Use $rimuru-coordinator to choose the workflow and coordinate this task."
 policy:
   allow_implicit_invocation: true

@@ -19,7 +19,9 @@ Create a reusable verification skill grounded in the project's actual environmen
 
 For complex projects, keep a small feature-to-check map of important behaviors, their checks, and remaining gaps. Reuse an existing map when available.
 
-Before handoff, see each new check fail against a deliberate safe break or a known-bad state; a check never seen failing proves nothing. Record the covered paths and the commit the procedure was last synced to.
+Before handoff, see each new check fail against a deliberate safe break or a known-bad state; a check never seen failing proves nothing. A procedure that was never executed is a draft. Record the covered paths and the commit the procedure was last synced to.
+
+When the same mechanical mistake keeps recurring, prefer turning it into an automatic check over adding prose.
 
 ## Maintenance
 
