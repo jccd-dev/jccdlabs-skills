@@ -1,48 +1,54 @@
 ---
 name: rimuru-coordinator
-description: Choose and coordinate development workflows. Use when the user requests Rimuru or rimuru-coordinator, or asks for workflow selection and coordination.
+description: Stay on for a task and pick the next procedure (plan, build, investigate, review, verify) so JC does not have to. Use when the user requests Rimuru or rimuru-coordinator, wants the agent to choose the workflow, or has multi-phase work to carry through.
 ---
 
 # Rimuru — Coordinate
 
-## Scope
+Rimuru mode means JC states the outcome once and the agent chooses each next step until the task is done or JC stops the mode. Its value is fewer handoffs, not more process: one agent, the phases the task actually needs, each loaded once.
 
-Coordinate this task and its follow-ups until completion or JC stops the mode. Select the next procedure yourself.
+## When it pays off
 
-Explanation and opinion questions stay read-only, including questions about skipped procedures. Explain from evidence; list pending work separately instead of running omitted steps, editing files, or launching agents.
+- Work that crosses phases: plan → build → verify, or diagnose → fix.
+- Resuming work, or taking over another agent's work.
+- JC is unsure which skill fits.
 
-## Select a workflow
+For one clear fix or one clear question, Rimuru adds a skill load and nothing else. Do the work directly with the right specialist, and say so in one line when JC invoked Rimuru for it.
 
-Choose from the desired outcome and constraints. Evaluate suggested implementations unless JC makes them requirements. Clear implementation requests can proceed directly.
-
-Check approved plans against current code and requirements; reopen only concrete conflicts or missing consequential decisions.
+## Pick the phase
 
 | Outcome | Procedure |
 | --- | --- |
-| Scope, design, or proposal | benimaru-planner |
+| Scope, design, or "is it worth it?" | benimaru-planner |
 | Build, fix, or resume implementation | kurobe-implementer |
 | Explain a failure from evidence | soei-investigator |
-| Find defects in a supplied change | hakuro-reviewer |
+| Find defects in a change | hakuro-reviewer |
 | Prove requested behavior | ranga-verifier |
 | Decide coverage and test scope | shuna-test-triage |
 | Create a reusable verification procedure | kaijin-verification-builder |
 
-Before each concrete phase, read and follow its mapped skill unless already loaded and applicable. Briefly name it. Inline work still requires the procedure. If unavailable, report it and use its documented fallback or project guidance.
+Load a skill only when its phase starts, and only once per task. Name the transition in one line, such as "Plan agreed → Kurobe, slice 1." Skip phases the task does not need: clear work goes straight to Kurobe, which sizes its own checks. If a skill is unavailable, say so and use project guidance.
 
-Skill selection leaves the parent model unchanged and does not require another agent. Specialists also work without Rimuru.
+Questions and opinion requests stay read-only: answer from evidence and list pending work instead of running it. A proposal requested for review stops before code. After JC approves, continue to implementation without a new interview.
 
-## Coordinate efficiently
+## Ask like Benimaru
 
-Inspect factual questions. Ask JC about consequential behavior, scope, cost, or authority choices, with options and a reasoned recommendation. Batch routine choices with recommended defaults; ask authority, data, or cost decisions one at a time. Give opinion verdicts first.
+Look up facts yourself. Ask JC only about behavior, scope, cost, or authority. Use the host's question tool when one exists, otherwise numbered questions with lettered choices. Give 2–4 real choices, with the recommended one first and a reason tied to evidence. Ask data-loss, authority, and cost decisions one at a time.
 
-Before choosing inline or delegated execution, check applicable task and standing delegation instructions; reuse valid loaded context. Explicit standing delegation instructions authorize work within their scope. A model preference alone does not require delegation.
+## Keep it cheap
 
-Otherwise, keep straightforward work with the parent. Delegate only when authorized and a named independent task materially helps. Read [delegation preferences](references/delegation.md) before dispatch. Independent review needs a concrete risk or uncertainty. Treat a one-task preference as standing only when JC says it always applies.
+Stay in one agent by default. Every subagent starts cold: it re-reads the skill, the project instructions, and the code before doing anything. On small work that start-up cost is larger than the task, so a Haiku subagent can cost more than doing the work inline with the parent model. Delegation saves money only when a large independent job (a wide repo scan, a long browser session) returns a short result.
 
-Reuse findings and checks valid for the current code and target; repeat only for changes, failures, or an evidence gap.
+- When JC names a model or asks for delegation in this conversation ("use Sonnet 5.5 high", "use Haiku for the browser"), do it and confirm the model in one line.
+- Follow standing delegation instructions for the host, such as T3 Code's `delegate_task`.
+- Otherwise delegate on your own only for a large independent job like the ones above, and say why in one line first.
 
-## Completion
+A model or provider preference from an earlier session, including one saved in memory, applies only when JC said it always applies. Read [delegation preferences](references/delegation.md) before any dispatch; it covers models and host rules.
 
-For authorized multi-session implementation, keep a compact continuation record at slice boundaries or handoff. Reuse the existing authorized record; if none exists and durable writing is not authorized, provide the handoff in the response. Include the checked revision and relevant uncommitted changes, completed work/current slice, checks with results and targets, unresolved findings or decisions, and the next action. Preserve explicitly confirmed public test seams and their confirmation references. Link evidence rather than copying logs; mark unrun checks and unknown state. On resume, compare the record with current code before reusing evidence.
+Reuse findings and checks that still hold for the current code. Repeat a check only after a change, a failure, or an evidence gap.
 
-Report the result, observed evidence, and gaps. Continue authorized implementation after decisions settle; stop proposals requested for review before code changes.
+## Finish
+
+Report the result, the checks you ran, and anything still pending.
+
+When work must continue in another session, give a short handoff: the revision and uncommitted changes, the current slice or completed work, checks with results, open decisions, and the next action. Update an existing plan file or handoff instead of creating a new one; write a file only when JC authorized it. On resume, compare the handoff with the current code before reusing its evidence.

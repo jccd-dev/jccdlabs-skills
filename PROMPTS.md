@@ -118,7 +118,7 @@ existing authorization requirements.
 
 ## Benimaru Planner
 
-Use Benimaru when understanding or choices are unresolved. It should restate your goal and problem before developing the plan.
+Use Benimaru when understanding or choices are unresolved. It restates your goal and problem, asks open decisions with recommended choices, and only then recommends a plan.
 
 ### Explore an outcome without prescribing the solution
 
@@ -126,9 +126,9 @@ Use Benimaru when understanding or choices are unresolved. It should restate you
 Use benimaru-planner.
 I want [outcome] because [problem]. Constraints: [limits].
 Restate my goal, the problem, and what success would look like.
-Inspect the relevant code. Clarify unanswered choices that could materially
-change the approach before recommending it; skip questions the evidence answers.
-Explain why each question matters. Keep the plan in this conversation.
+Inspect the relevant code. Before recommending, ask the decisions that could
+change the approach, each with choices and your recommended one; skip questions
+the evidence answers. Keep the plan in this conversation.
 ```
 
 ### Assess an existing plan or suggested approach
@@ -149,7 +149,7 @@ Assess the actual scope and dependencies before deciding whether to split it.
 If one run would be unreliable, propose the fewest complete, independently
 verifiable parts. For each, give the result, dependencies, and completion checks.
 Make each understandable to a fresh agent. Keep small work as one task.
-Draft the breakdown here; do not publish tracker issues yet.
+Save the plan to [path] with a checkbox per slice.
 ```
 
 **Expect:** shared understanding, justified choices, and a plan sized to the work. A ticket count or long document alone is not evidence of a good plan.
@@ -187,13 +187,12 @@ Inspect this state and complete only the named slice. Verify its outcome and
 record the result and next action so another agent can continue the larger task.
 ```
 
-### Implement a ticket
+### Implement the next plan slice
 
 ```text
-Use kurobe-implementer to implement [ticket reference or local ticket file].
-The approved spec and explicitly confirmed test seams are [references, if known].
-Check blockers and implement this ticket when it is ready. Preserve the parent
-issue and follow established authority for tracker updates and commits.
+Use kurobe-implementer to implement the next unticked slice of [plan file].
+Check that its dependencies are ticked. Verify it, then tick it with one line
+of evidence in the same commit as the code.
 ```
 
 ### Use TDD for changed behavior
@@ -201,7 +200,7 @@ issue and follow established authority for tracker updates and commits.
 ```text
 Use kurobe-implementer with TDD for [behavior].
 Use an available tdd skill or the implementation skill's fallback.
-Choose meaningful coverage and confirm public test seams first. Work one behavior
+Test through public interfaces. Work one behavior
 at a time: observe the test fail for the intended reason, implement the minimum,
 and confirm it passes. Refactor during review; test observable behavior.
 ```
@@ -399,7 +398,7 @@ ones. Demonstrate one representative safe journey; do not claim uncovered paths 
 | Work is expanding | "Return to [outcome]. Explain which extra changes are required and leave optional improvements for later." |
 | You approved a proposal | "Proceed with the recommended approach within the agreed scope." |
 | Checks found a defect | "Fix this confirmed gap, preserve unrelated behavior, then rerun affected checks." |
-| You need a handoff | "Update the existing continuation record with the checked revision and relevant uncommitted changes, completed work, check results and targets, unresolved findings or decisions, and next action for a fresh agent. Link evidence; mark unknown state and unrun checks." |
+| You need a handoff | "Update the existing plan file or handoff with the checked revision and relevant uncommitted changes, completed work, check results and targets, unresolved findings or decisions, and next action for a fresh agent. Link evidence; mark unknown state and unrun checks." |
 | Review is looping | "Identify the unresolved issue and new evidence. Reassess if another pass would repeat settled findings." |
 
 Use specific outcomes rather than "make everything better." Avoid adding roles, ceremonies, or testing restrictions unless they serve this task. Keep the useful prompt short; add detail only when it changes a decision.

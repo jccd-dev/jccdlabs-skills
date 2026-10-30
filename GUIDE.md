@@ -25,7 +25,7 @@ The examples use ordinary skill names, without `$` or `/`. You can also use the 
 | Your situation | What to say | What to expect |
 | --- | --- | --- |
 | You know the outcome but need an approach | "Use rimuru-coordinator. I want [outcome] because [problem]. Recommend the simplest approach and give me choices for consequential decisions." | A plain-language understanding, inspection of relevant code, and a recommendation. |
-| You want a proposal before implementation | "Use benimaru-planner. Plan [outcome] first. Restate my goal and problem, explain your recommendation, and wait before editing code." | A reviewable plan; project code remains unchanged. |
+| You want a proposal before implementation | "Use benimaru-planner. Plan [outcome] first." | Your goal and problem restated, open decisions asked with recommended choices, then a recommendation and plan; code unchanged. |
 | You want the agent to build a clear feature | "Use rimuru-coordinator to build [behavior]. Respect [constraints]. Ask only about decisions that affect the result." | The appropriate procedure and implementation, with meaningful checks. |
 | You approved a plan | "Use kurobe-implementer. Implement [plan reference]. Reassess only concrete conflicts; reuse settled decisions." | Implementation without a fresh planning interview. |
 | Work is unfinished | "Use rimuru-coordinator to resume [task]. Here is the current state, completed checks, and remaining work: [details]." | Reuse of valid findings; checks repeated only when needed. |
@@ -42,11 +42,15 @@ Use the [copyable scenario prompts](PROMPTS.md) for starting a feature, taking o
 
 ### Rimuru Coordinator — choose and coordinate
 
-**Use when:** your task may need planning, implementation, diagnosis, or verification and you want the agent to manage those transitions.
+**Use when:** the task crosses phases (plan → build → verify, or diagnose → fix), you are resuming or taking over work, or you are unsure which skill fits. Rimuru mode stays on until the task is done or you stop it.
+
+**Skip it when:** you have one clear fix or one clear question. Ask Kurobe or the specialist directly; Rimuru would only add a skill load.
 
 **Example:** "Use rimuru-coordinator to add saved search filters. First understand the outcome, then build the simplest version using our existing search."
 
-**Expected result:** the agent selects the needed procedure, asks understandable questions, completes authorized work, and reports evidence. Simple work stays with the parent; delegation needs a concrete benefit and authorization.
+**Expected result:** one agent that loads only the phases the task needs, each once, and names each transition in one line ("Plan agreed → Kurobe, slice 1"). Questions come with choices and a recommendation, like Benimaru's.
+
+**Why it can cost more:** every subagent starts cold and re-reads the skill, project instructions, and code. On small work that start-up cost is larger than the task, so a Haiku subagent can cost more than the parent doing it inline. Rimuru delegates only when you ask in the conversation, when a standing host rule says so (T3 Code's `delegate_task`), or for a large independent job that returns a short result, and it says why first.
 
 **Adjust when:** it loads every workflow, repeats planning, asks which skill to use next, or delegates without explaining the benefit. Request the specific correction; record repeated failures before changing the skill.
 
@@ -56,13 +60,13 @@ Use the [copyable scenario prompts](PROMPTS.md) for starting a feature, taking o
 
 **Example:** "Use benimaru-planner. I want recurring reminders but have not chosen how they should work. Restate the goal and problem, investigate, and clarify choices that could change the approach before recommending a plan."
 
-**Expected result:** a brief statement of your goal, problem, and success conditions; investigation and focused questions where answers could change the approach; then grounded options and the smallest workable plan with relevant checks. Clear requests need no interview. Discoveries can inform clarification, while recommendations dependent on unanswered consequential questions wait. Analysis-only requests receive an assessment rather than a forced implementation plan.
+**Expected result:** four steps in order. (1) Your outcome, problem, and "done when" check, restated. (2) The open decisions that could change the approach, asked before any recommendation: up to four per round, each with 2–4 choices, the recommended one first with its reason. It uses the host's question tool when available, numbered choices otherwise, and checks facts itself instead of asking. (3) A verdict-first recommendation and the main rejected alternative. (4) A plan sized to the work, split into slices only when one session would be unreliable.
 
-Large work may need a few independently verifiable parts with outcomes, dependencies, and checks; small work stays one task. Planning stays in the conversation. Benimaru may suggest Matt's `to-spec` or `to-tickets` when useful, leaving their synthesis, confirmation, breakdown, and publishing procedures to those skills. Invoking Benimaru or approving a plan does not authorize creating or updating specs, tickets, or planning files. Earlier explicit requests still count; JC invokes the companions under their host invocation policy and established authority.
+The plan stays in the conversation unless you ask to save it; then it writes one Markdown file with a checkbox per slice, which Kurobe ticks as slices land.
 
-During authorized implementation, Rimuru defines the [compact continuation record](skills/rimuru-coordinator/SKILL.md#completion), and Kurobe follows that guidance when work needs another session. Reuse an existing authorized record, or provide the handoff in the response when durable writing is not authorized. Ordinary completed tasks need no separate handoff document.
+When work needs another session, Rimuru and Kurobe give a [short handoff](skills/rimuru-coordinator/SKILL.md#finish). They update an existing plan file or handoff, or give the handoff in the response when writing a file is not authorized. Ordinary completed tasks need no separate handoff document.
 
-**Adjust when:** it recommends before resolving a consequential question, repeats settled questions, assumes your suggested design is mandatory, or creates unrequested planning artifacts. Specify the missed decision or unnecessary step.
+**Adjust when:** it recommends before asking, asks without choices or a recommendation, offers choices that do not answer the same question, asks you facts it could look up, or repeats settled questions. Name the step it skipped.
 
 ### Kurobe Implementer — build or fix
 
@@ -70,9 +74,9 @@ During authorized implementation, Rimuru defines the [compact continuation recor
 
 **Example:** "Use kurobe-implementer to implement the approved saved-filter plan. Preserve existing search behavior and verify the changed path."
 
-**Expected result:** a complete change at the owning boundary, reuse of existing architecture, a meaningful test decision, and observed checks. Failures caused by the change are fixed until checks pass or a concrete blocker remains. Authorized shared integration-branch batches may defer expected cross-batch failures to the final integration ticket.
+**Expected result:** a complete change at the owning boundary, reuse of existing architecture, a meaningful test decision, and observed checks. Small, clear fixes stay fast: checks run inline without loading other skills. Failures caused by the change are fixed until checks pass or a concrete blocker remains. Before editing a failing test, Kurobe says whether the code or the test is wrong and why. A finished plan slice is ticked in the same commit as its code.
 
-For behavior work from a spec or tickets, Kurobe defaults to TDD at explicitly confirmed public seams. It loads an available `tdd` skill or uses its fallback: one behavioral test red for the right reason, then minimal green. Shuna decides what coverage is useful; an existing failing regression can provide red. Claim a cycle only when the intended red before implementation and green afterward were observed. A justified no-test decision reports its checks. Direct small work follows project requirements or an explicit TDD request.
+TDD is used for bug fixes when a failing test is cheap, and whenever you say "Use TDD": one behavioral test red for the right reason, then minimal green. Commands you must run yourself come with real values, the user to run them as, and the expected output.
 
 **Adjust when:** it adds speculative abstractions, skips relevant checks, weakens assertions, or repeatedly retries without new evidence. Identify the actual mismatch with the request.
 
@@ -102,9 +106,9 @@ For behavior work from a spec or tickets, Kurobe defaults to TDD at explicitly c
 
 **Example:** "Use shuna-test-triage. Does this filter change have a coverage gap? Inspect existing assertions and recommend reuse, extension, a new test, or no new test."
 
-**Expected result:** one explained test decision, the failure it catches, and the smallest faithful scope. New tests are justified by a gap; skipping a new test still requires appropriate verification.
+**Expected result:** one explained test decision, the failure it catches, and the smallest faithful scope. New tests are justified by a gap; skipping a new test still requires appropriate verification. When an existing end-to-end flow or using the app proves the behavior, it checks that way instead of writing a test. New tests use literal expected values, run integration cases against the real engine, and are broken once on purpose to show they can fail.
 
-**Adjust when:** it adds tests for every edit, mirrors implementation details, or chooses mocks that hide the failure. Test scope is about what must be exercised; TDD is about implementation order.
+**Adjust when:** it adds tests for every edit, writes a test that using the app would already prove, puts logic in tests, mirrors implementation details, or chooses mocks that hide the failure. Test scope is about what must be exercised; TDD is about implementation order.
 
 ### Ranga Verifier — prove existing work
 

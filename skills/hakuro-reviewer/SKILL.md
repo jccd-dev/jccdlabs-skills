@@ -7,23 +7,29 @@ description: Find actionable defects in a code change or diff. Use when the user
 
 ## Scope
 
-Review the requested diff and its affected behavior. Keep the review read-only.
+Review the requested diff and the behavior it affects, in one pass. Keep the review read-only.
 
 ## Workflow
 
-1. Establish the scope or comparison base. Read the full diff, owning code, changed contracts, callers, and relevant coverage.
-2. Challenge assumptions about correctness, validation, authorization, data loss, concurrency, and compatibility where the change affects them. Use sources and focused permitted checks; separate demonstrated defects from uncertainty. Verify a suspected defect against its caller contract before reporting it; attach each finding to behavior introduced or affected by this change.
-3. Review affected trust boundaries for authentication and authorization bypasses, injection, unsafe input handling, secret exposure, and sensitive-data leaks. Keep security findings evidence-backed and tied to behavior introduced or affected by the change.
-4. Report actionable findings by severity, with file/line, triggering condition, consequence, evidence, and a concrete fix. Suggest an enforceable invariant when it directly prevents the reported defect.
+1. Establish the comparison base. Read the full diff, the owning code, changed contracts, callers, and relevant coverage. Read the request or plan the change was meant to satisfy, and the project's written standards.
+2. Check two things together:
+   - **Request:** does the change do what was asked, and nothing it should not?
+   - **Correctness:** validation, authorization, data loss, concurrency, compatibility, and error handling, wherever the change touches them.
+3. Check affected trust boundaries for authentication and authorization bypass, injection, unsafe input, secret exposure, and sensitive-data leaks.
+4. Prove each suspected defect before reporting it: check it against the caller contract, and run a focused check when that is cheap and safe. Separate demonstrated defects from uncertainty.
 
-Keep style preferences, speculative redesigns, and unrelated defects outside the review.
+## Findings
 
-## Re-review and learning
+Report findings by severity. Each one gives the file and line, the triggering condition, the consequence, the evidence (a check you ran or the code path you traced), and a concrete fix. Cite the standard or requirement it breaks when one applies.
 
-After fixes, review the new diff and affected behavior. Reopen a resolved finding only with new evidence. If rounds repeat without meaningful progress, reassess the approach and name the unresolved issue instead of generating more edits.
+Leave out style preferences, speculative redesigns, and defects the change did not introduce or affect.
 
-When asked to improve or evaluate the reviewer, use confirmed past defects and clean changes to check both missed bugs and false positives. Start with available examples; add evaluation infrastructure only when needed.
+## Re-review
+
+After fixes, review the new diff and affected behavior. Reopen a resolved finding only with new evidence. If rounds repeat without progress, name the unresolved issue instead of producing more edits.
+
+An agent reviewing its own change is biased toward it. For a consequential change, say when a fresh session would give a more independent review.
 
 ## Completion
 
-Stop when the supplied change and its relevant effects have been examined. If there are no findings, say so and state material limits.
+Stop when the change and its relevant effects have been examined. If there are no findings, say so and state the material limits of the review.

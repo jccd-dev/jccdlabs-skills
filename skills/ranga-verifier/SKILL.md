@@ -13,7 +13,9 @@ Prove the requested behavior against acceptance conditions derived from the requ
 
 1. Inspect project guidance, existing checks, and any project verification procedure. Confirm the target, command effects, dependencies, and fixture persistence before execution.
 2. Map each condition to the narrowest meaningful evidence. Run required checks within task permissions; use existing browser or app coverage, then a safe interactive check for remaining visible behavior.
-3. Inspect the actual artifact or user journey. A build or typecheck proves only what it checks. Capture observed results and retain evidence before cleaning up task-created fixtures or processes.
+3. Inspect the actual artifact or user journey. A build or typecheck proves only what it checks; reading code is not running it. Capture observed results and retain evidence before cleaning up task-created fixtures or processes.
+
+When JC must run a check, such as on a server, give commands that work when pasted: real values instead of placeholders, which user runs them and whether they need `sudo`, and the expected output. When a value is unknown, give the command that finds it first.
 
 ## Evidence
 

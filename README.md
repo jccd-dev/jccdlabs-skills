@@ -45,9 +45,11 @@ Ask for a skill by its short or full name in ordinary text: "Use Kurobe to imple
 
 Install the skills in a location your harness discovers. [Codex](https://learn.chatgpt.com/docs/build-skills) allows implicit invocation through `agents/openai.yaml`; [Claude Code](https://code.claude.com/docs/en/skills) allows model invocation by default; [OpenCode](https://opencode.ai/docs/skills/) lists skill names and descriptions for its agent to select through the `skill` tool. Other Agent Skills-compatible harnesses can use the same descriptions. Selection depends on the model and host settings; native skill selectors remain available when you need explicit loading.
 
-Kurobe uses Shuna to decide coverage. For behavior work from a spec or tickets, TDD is the default: confirm public test seams, then work one red–green behavior at a time. An available `tdd` skill guides the loop; Kurobe includes a fallback. Existing coverage is reused where sufficient, with no claim of a red–green cycle when none occurred. Direct small work follows project requirements and any requested TDD procedure.
+Benimaru restates the goal and problem, asks the open decisions with recommended choices, and only then recommends an approach and plan. When asked, it saves one plan file with a checkbox per slice; Kurobe ticks each slice in the same commit as its code. No tracker or companion skill is required.
 
-Benimaru resolves consequential questions before recommending a plan in the conversation. It can suggest Matt Pocock's `to-spec` or [to-tickets](https://github.com/mattpocock/skills/blob/main/skills/engineering/to-tickets/SKILL.md) when useful; those companions own spec synthesis, test-seam confirmation, ticket breakdown, and publishing. Invoking Benimaru or approving its plan does not authorize artifact creation. JC invokes the companions under their host invocation policy and established authority. Install them and follow their tracker setup requirements. Kurobe can implement an authorized, unblocked ticket.
+Kurobe sizes its own procedure: small, clear changes run checks inline without loading other skills, while larger or risky work uses Shuna, Ranga, or Hakuro for the part that needs it. TDD is used for bug fixes when a failing test is cheap, and whenever requested. An available `tdd` skill guides the loop; Kurobe includes a fallback.
+
+Every skill runs in a single agent by default. Ideas from [Matt Pocock's skills](https://github.com/mattpocock/skills) and [pstack](https://github.com/cursor/plugins/tree/main/pstack) are adapted without their subagent panels.
 
 Install the whole collection for sibling procedures to be available. Individually installed skills have fallbacks for missing helpers. All eight allow model-initiated skill invocation; Shuna uses Codex's default policy. The shared skill files use standard `name` and `description` fields, with no Claude-only invocation restrictions. Loading a skill does not expand the task's editing or execution authority.
 
@@ -84,6 +86,8 @@ codex plugin add jccdlabs-skills@jccdlabs-skills
 The plugin supplies no connectors or extra permissions. Refresh its source with `codex plugin marketplace upgrade jccdlabs-skills`, then use your host's plugin update flow.
 
 ## Status
+
+Version 0.5.0 rebuilds Benimaru around shared understanding: restate, ask decisions with recommended choices, then plan. Spec and ticket companions are replaced by one optional plan file. Kurobe scales its procedure to the change, states whether code or test is wrong before editing a failing test, and closes plan slices in the same commit. Soei builds a reproduction loop and ranks falsifiable hypotheses; Hakuro proves findings and checks the change against the request; Shuna keeps logic out of tests, uses real dependencies for integration tests, breaks a protected line once to prove a new test can fail, and checks in the app instead of adding a test when that proves the behavior. Rimuru says when it pays off and when to skip it, loads each phase once, explains why subagents can cost more than inline work, follows explicit model requests, and ignores stale saved provider notes. Commands handed to JC must work when pasted.
 
 Version 0.4.2 makes Hakuro's security review explicit at affected trust boundaries: authentication and authorization bypasses, injection, unsafe input handling, secret exposure, and sensitive-data leaks. Findings remain evidence-backed and tied to the supplied change. Metadata parsing and diff formatting were checked; live reviewer behavior remains untested.
 
