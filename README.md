@@ -49,7 +49,7 @@ Benimaru restates the goal and problem, asks the open decisions with recommended
 
 Kurobe sizes its own procedure: small, clear changes run checks inline without loading other skills, while larger or risky work uses Shuna, Ranga, or Hakuro for the part that needs it. TDD is used for bug fixes when a failing test is cheap, and whenever requested. An available `tdd` skill guides the loop; Kurobe includes a fallback.
 
-Every skill runs in a single agent by default. Ideas from [Matt Pocock's skills](https://github.com/mattpocock/skills) and [pstack](https://github.com/cursor/plugins/tree/main/pstack) are adapted without their subagent panels.
+Every skill runs in a single agent by default. The one built-in exception is Hakuro, which reviews a risky change the same agent wrote in a fresh subagent. Ideas from [Matt Pocock's skills](https://github.com/mattpocock/skills) and [pstack](https://github.com/cursor/plugins/tree/main/pstack) are adapted without their subagent panels.
 
 Install the whole collection for sibling procedures to be available. Individually installed skills have fallbacks for missing helpers. All eight allow model-initiated skill invocation; Shuna uses Codex's default policy. The shared skill files use standard `name` and `description` fields, with no Claude-only invocation restrictions. Loading a skill does not expand the task's editing or execution authority.
 
@@ -86,6 +86,8 @@ codex plugin add jccdlabs-skills@jccdlabs-skills
 The plugin supplies no connectors or extra permissions. Refresh its source with `codex plugin marketplace upgrade jccdlabs-skills`, then use your host's plugin update flow.
 
 ## Status
+
+Version 0.7.0 connects verification and review. Ranga runs typecheck, lint, and existing tests before any hands-on check, tries one input that must be refused where a condition protects data or access, and recommends Kaijin for a hands-on check that will be needed again. Hakuro reads verification evidence first, defines three severity levels, stops after two re-review rounds on the same finding, and reviews a risky change the same agent wrote in a fresh subagent. Soei suggests a fix only when a check demonstrated the cause. Benimaru says where new code will live for a new project or module. These rules have not been exercised on real tasks yet.
 
 Version 0.6.0 rewrites all eight skills in compact, plain, impersonal language. Ranga matches each condition to the evidence that proves it, including when a browser is needed, and counts skipped tests as not run. On risky work Rimuru verifies before review, and Hakuro focuses on what running the code can't show. Benimaru requires a runnable "done when", Kaijin fails only on new failures when old ones exist, and Kurobe keeps the TDD rule on small bug fixes.
 
