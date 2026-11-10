@@ -38,7 +38,7 @@ Wait for the answers. Ask another round only when an answer opens a new conseque
 
 Lead with the verdict. For "is it worth it?" or "should we?", answer yes or no first, then why.
 
-Recommend the simplest approach that meets the outcome, reusing existing patterns and dependencies. Name the main alternative and why it lost. Include affected areas, data or migration effects, and the main failure risk when they matter.
+Recommend the simplest approach that meets the outcome, reusing existing patterns and dependencies. Name the main alternative and why it lost. Include affected areas, data or migration effects, and the main failure risk when they matter. For a new project or module, say where the code will live and what its public interface is; load the `codebase-design` skill when available.
 
 When the uncertainty is something the user could see rather than answer, such as how a UI feels or whether a state model holds, suggest a throwaway prototype if authorized.
 

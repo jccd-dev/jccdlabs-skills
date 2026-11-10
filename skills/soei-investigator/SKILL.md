@@ -19,4 +19,4 @@ Remove temporary logging and added fixtures before finishing.
 
 ## Finish
 
-Report observations separately from inference, the likely cause with confidence, and the smallest fix or next discriminating check. End with a supported cause or an explicit unknown and the exact evidence needed to resolve it. Apply a fix only within the user's request.
+Report observations separately from inference, and the likely cause with confidence. When a check demonstrated the cause, suggest the smallest fix, where it belongs, and the check that would prove it. When the cause is still inferred, give the next discriminating check in place of a fix. End with a supported cause or an explicit unknown and the exact evidence needed to resolve it. Apply a fix only within the user's request.

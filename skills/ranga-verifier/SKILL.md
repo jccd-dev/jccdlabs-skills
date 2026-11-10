@@ -10,8 +10,9 @@ Prove the requested behavior against conditions from the request and project req
 ## Steps
 
 1. Read project guidance, existing checks, and any verification procedure. Before running anything, confirm its target, effects, dependencies, and whether its test data stays.
-2. Give each condition the smallest check that proves it, within task permissions, using the table below. Prefer existing browser or app coverage, then a safe hands-on check for remaining visible behavior.
-3. Inspect the real result or user journey. A build or typecheck proves only what it checks; reading code isn't running it. Skipped tests count as not run. Save evidence before cleaning up anything the task created.
+2. Run the project's typecheck, lint, and existing tests first. When a failure touches the work being verified, report it and stop before any hands-on check.
+3. Give each condition the smallest check that proves it, within task permissions, using the table below. Prefer existing browser or app coverage, then a safe hands-on check for remaining visible behavior.
+4. Inspect the real result or user journey. A build or typecheck proves only what it checks; reading code isn't running it. Skipped tests count as not run. Save evidence before cleaning up anything the task created.
 
 | Condition | Evidence |
 | --- | --- |
@@ -25,6 +26,8 @@ Prove the requested behavior against conditions from the request and project req
 
 Use the host's browser tool or the project's browser tests, with one journey per condition. Screenshots prove appearance only; prove behavior from page state, network calls, or saved data.
 
+Where a condition protects data or access, also try one input that must be refused, and confirm nothing changed.
+
 When the user must run a check, such as on a server, give paste-ready commands: real values, which user, whether `sudo` is needed, and expected output. For an unknown value, give the command that finds it first.
 
 ## Evidence
@@ -37,4 +40,4 @@ Stop when every required condition has evidence. Repeat or widen a check only af
 
 Report each condition as passed, failed, or pending, with evidence or the exact blocker, plus data left behind and important coverage gaps. Missing setup leaves dependent conditions pending, even when the blocker is explained.
 
-Use kaijin-verification-builder when the deliverable is a reusable procedure; recommend it when a condition stays pending across rounds.
+Use kaijin-verification-builder when the deliverable is a reusable procedure; recommend it when a condition stays pending across rounds or the same hands-on check will be needed again.

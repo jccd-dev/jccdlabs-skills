@@ -45,6 +45,7 @@ Stay in one agent by default. Every subagent starts cold, re-reading the skill, 
 
 - When the user names a model or asks for delegation in this conversation ("use Sonnet 5.5 high", "use Haiku for the browser"), do it and confirm the model in one line.
 - Follow standing delegation instructions for the host, such as T3 Code's `delegate_task`.
+- Hakuro reviews a risky change this agent wrote in a fresh subagent, because an author is biased toward its own work.
 - Otherwise delegate only for a large independent job like those above, and give the reason in one line first.
 
 A model or provider preference from an earlier session, including one saved in memory, applies only when the user said it always applies. Read [delegation preferences](references/delegation.md) before any dispatch; it covers models and host rules.

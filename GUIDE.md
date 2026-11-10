@@ -50,7 +50,7 @@ Use the [copyable scenario prompts](PROMPTS.md) for starting a feature, taking o
 
 **Expected result:** one agent that loads only the phases the task needs, each once, and names each transition in one line ("Plan agreed → Kurobe, slice 1"). Questions come with choices and a recommendation, like Benimaru's.
 
-**Why it can cost more:** every subagent starts cold and re-reads the skill, project instructions, and code. On small work that start-up cost is larger than the task, so a Haiku subagent can cost more than the parent doing it inline. Rimuru delegates only when you ask in the conversation, when a standing host rule says so (T3 Code's `delegate_task`), or for a large independent job that returns a short result, and it says why first.
+**Why it can cost more:** every subagent starts cold and re-reads the skill, project instructions, and code. On small work that start-up cost is larger than the task, so a Haiku subagent can cost more than the parent doing it inline. Rimuru delegates only when you ask in the conversation, when a standing host rule says so (T3 Code's `delegate_task`), for a large independent job that returns a short result, or for Hakuro's review of a risky change the same agent wrote, and it says why first.
 
 **Adjust when:** it loads every workflow, repeats planning, asks which skill to use next, or delegates without explaining the benefit. Request the specific correction; record repeated failures before changing the skill.
 
