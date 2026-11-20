@@ -35,7 +35,7 @@ State once per behavior, grouping behaviors with the same decision:
 
 Reject a test that passes when the behavior breaks or fails when only internals change.
 
-Revise when evidence changes the decision. Confirm a bug test fails for the intended defect when safe and practical, then passes with the fix. For a non-bug test, break the protected line once, watch the test fail, and undo the break; use mutation tools only on the user's request. Triage chooses coverage; the project's TDD procedure governs implementation order.
+Revise when evidence changes the decision. Confirm a bug test fails for the intended defect when safe and practical, then passes with the fix. For a non-bug test, break the protected line once, watch the test fail, and undo the break; use mutation tools only on the user's request. Triage chooses coverage; Kurobe's TDD rule governs implementation order.
 
 When an existing test fails, decide whether the code or the test is wrong before changing either, and state the evidence. Never weaken an assertion to make broken behavior pass.
 

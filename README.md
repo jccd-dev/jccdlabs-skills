@@ -47,7 +47,7 @@ Install the skills in a location your harness discovers. [Codex](https://learn.c
 
 Benimaru restates the goal and problem, asks the open decisions with recommended choices, and only then recommends an approach and plan. When asked, it saves one plan file with a checkbox per slice; Kurobe ticks each slice in the same commit as its code. No tracker or companion skill is required.
 
-Kurobe sizes its own procedure: small, clear changes run checks inline without loading other skills, while larger or risky work uses Shuna, Ranga, or Hakuro for the part that needs it. TDD is used for bug fixes when a failing test is cheap, and whenever requested. An available `tdd` skill guides the loop; Kurobe includes a fallback.
+Kurobe sizes its own procedure: small, clear changes run checks inline without loading other skills, while larger or risky work uses Shuna, Ranga, or Hakuro for the part that needs it. TDD is used for bug fixes when a failing test is cheap, and whenever requested. Kurobe owns the red-green loop and Shuna owns test quality, so no outside TDD skill is needed.
 
 Every skill runs in a single agent by default. The one built-in exception is Hakuro, which reviews a risky change the same agent wrote in a fresh subagent. Ideas from [Matt Pocock's skills](https://github.com/mattpocock/skills) and [pstack](https://github.com/cursor/plugins/tree/main/pstack) are adapted without their subagent panels.
 
@@ -86,6 +86,8 @@ codex plugin add jccdlabs-skills@jccdlabs-skills
 The plugin supplies no connectors or extra permissions. Refresh its source with `codex plugin marketplace upgrade jccdlabs-skills`, then use your host's plugin update flow.
 
 ## Status
+
+Version 0.8.0 makes the collection self-contained for TDD: Kurobe runs the red-green loop itself, takes test-first requests, and follows Shuna for test quality instead of loading an outside `tdd` skill. Hakuro maps each changed file's inputs, queries, auth checks, sessions, external calls, and cryptography, reports security findings only for attacker-controlled values the framework doesn't already mitigate, loads an installed `security-review` skill at trust boundaries, and lists what it read and couldn't verify. Soei compares the failing path with similar working code and logs component boundaries to find the layer that breaks. Kurobe checks a subagent's diff before repeating its success claim. Ideas adapted from [Sentry's skills](https://github.com/getsentry/skills) and [Superpowers](https://github.com/obra/superpowers). All eight skills pass [SkillEvaluator](https://github.com/NVIDIA/SkillEvaluator) 1.0.1 Tier 1 checks without a model (schema, security, PII, license, quality grade B, and loading in six harnesses); deduplication and live agent evaluation have not been run.
 
 Version 0.7.0 connects verification and review. Ranga runs typecheck, lint, and existing tests before any hands-on check, tries one input that must be refused where a condition protects data or access, and recommends Kaijin for a hands-on check that will be needed again. Hakuro reads verification evidence first, defines three severity levels, stops after two re-review rounds on the same finding, and reviews a risky change the same agent wrote in a fresh subagent. Soei suggests a fix only when a check demonstrated the cause. Benimaru says where new code will live for a new project or module. These rules have not been exercised on real tasks yet.
 

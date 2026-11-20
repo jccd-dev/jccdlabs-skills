@@ -1,6 +1,6 @@
 ---
 name: kurobe-implementer
-description: Build, fix, or resume an authorized codebase change. Use when the user requests Kurobe or kurobe-implementer, or asks to implement a clear change, a plan, or a plan slice.
+description: Build, fix, or resume an authorized codebase change. Use when the user requests Kurobe or kurobe-implementer, or asks to implement a clear change, a plan, or a plan slice, including test-first or TDD work.
 ---
 
 # Kurobe: Implement
@@ -22,7 +22,7 @@ Extra skill loads and review passes cost time and tokens, so scale the procedure
 
 ## Tests
 
-Use TDD for bug fixes when a failing test is cheap to write at a real public interface, and whenever the user says "use TDD". Running the fix by hand doesn't replace that test. Load the `tdd` skill when available. Otherwise write one behavioral test with an expectation derived independently of the code, watch it fail for the intended reason, implement just enough to pass, and repeat. Don't batch tests first. Claim a red-green cycle only when both were observed.
+Use TDD for bug fixes when a failing test is cheap to write at a real public interface, and whenever the user says "use TDD". Running the fix by hand doesn't replace that test. Write one behavioral test with an expectation derived independently of the code, watch it fail for the intended reason, implement just enough to pass, and repeat. Don't batch tests first. Claim a red-green cycle only when both were observed. Test quality follows `shuna-test-triage` when it is installed.
 
 For other changes, state one test decision (reuse, extend, add, or none) and the failure it would catch. Prefer no new test over one that can't fail for the real bug. When an existing end-to-end flow or using the app proves the behavior, check it that way instead of adding a test.
 
@@ -38,7 +38,7 @@ Fix failures the change caused and rerun until checks pass or a concrete blocker
 
 ## Verify
 
-Run applicable typechecks and focused tests while working, and the full suite once at the end when safe. Map each requested behavior to observed evidence or a stated pending reason. For larger changes, check the diff for scope, data, authorization, and concurrency risks before finishing.
+Run applicable typechecks and focused tests while working, and the full suite once at the end when safe. Map each requested behavior to observed evidence or a stated pending reason. When a subagent reports success, check its diff and rerun its checks before repeating the claim. Don't claim completion with "should", "probably", or "seems to". For larger changes, check the diff for scope, data, authorization, and concurrency risks before finishing.
 
 ## Commands the user runs
 

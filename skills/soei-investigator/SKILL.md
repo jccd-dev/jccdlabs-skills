@@ -11,9 +11,10 @@ Establish what fails, where, and the best-supported cause. Keep the project read
 
 1. **Preserve the evidence.** Record symptoms, exact output, environment, and recent changes. Redact secrets. Read the owning code and callers.
 2. **Build a feedback loop.** Find the smallest safe check that shows the failure, such as a test, script, curl, or browser step. Without a loop that can fail, every theory is a guess; if none can be built, say so and use existing evidence.
-3. **Rank hypotheses.** Write 3–5 plausible causes, most likely first, each with the observation that would disprove it.
-4. **Test one variable at a time.** Pick the check that best separates the leading hypotheses. Tag temporary debug logging with a unique prefix so it can be found and removed. Repeat a check only with a changed condition. When earlier fixes failed, write down their shared premise and test it directly.
-5. **Trace to the boundary.** Follow the failure to the shared owner and affected consumers. For intermittent behavior, name the conditions and the missing evidence.
+3. **Compare and localize.** Find similar code that works and list its differences from the failing path, however small. When the failure crosses components, such as CI to build to signing or API to service to database, log what enters and leaves each boundary and run once to find the layer that breaks.
+4. **Rank hypotheses.** Write 3–5 plausible causes, most likely first, each with the observation that would disprove it.
+5. **Test one variable at a time.** Pick the check that best separates the leading hypotheses. Tag temporary debug logging with a unique prefix so it can be found and removed. Repeat a check only with a changed condition. When earlier fixes failed, write down their shared premise and test it directly.
+6. **Trace to the boundary.** Follow the failure to the shared owner and affected consumers. For intermittent behavior, name the conditions and the missing evidence.
 
 Remove temporary logging and added fixtures before finishing.
 

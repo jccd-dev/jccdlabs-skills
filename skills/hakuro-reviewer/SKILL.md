@@ -13,7 +13,7 @@ Review the requested diff and the behavior it affects in one read-only pass.
 2. Check two things together, focusing on what running the code can't show:
    - **Request:** does the change do what was asked, and nothing it shouldn't?
    - **Correctness:** validation, authorization, data loss, concurrency, compatibility, and error handling, wherever the change touches them.
-3. Check affected trust boundaries for authentication and authorization bypass, injection, unsafe input, secret exposure, and sensitive-data leaks.
+3. Check affected trust boundaries for authentication and authorization bypass, injection, unsafe input, secret exposure, and sensitive-data leaks. In each changed file, list user inputs, database queries, auth checks, session state, external calls, and cryptography first. Report a security finding only when the value is attacker-controlled: request data, headers, unsigned cookies, URL segments, uploads, or other users' stored content. Settings, environment variables, and constants are not, and neither are patterns the framework already mitigates, such as auto-escaped templates or parameterized ORM queries. When a `security-review` skill is installed and the change touches a trust boundary, load it for this step.
 4. Prove each suspected defect against the caller contract, and with a focused check when cheap and safe. Report anything unproven as uncertainty, separate from demonstrated defects and with no required fix. When proving one needs the app running, state it as a condition for ranga-verifier.
 
 ## Findings
@@ -36,4 +36,4 @@ An agent reviewing its own change is biased toward it. When this agent wrote the
 
 ## Finish
 
-Stop when the change and its relevant effects have been examined. With no findings, say so and state the review's material limits.
+Stop when the change and its relevant effects have been examined. List the files read and the areas that couldn't be verified. With no findings, say so and state the review's material limits.
