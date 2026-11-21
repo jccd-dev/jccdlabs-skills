@@ -6,7 +6,7 @@ Apply task and explicit standing delegation instructions before these model pref
 
 Default to the parent's provider unless the user selects another in the current conversation. Distinguish host from provider: T3 Code running Claude is a T3 host with a Claude provider. In Claude Code or the Claude desktop app, never route work to another provider (Codex, GPT, Gemini, `codex exec`) unless the user asks for it in that conversation; in T3 Code, cross-provider `delegate_task` is expected.
 
-Use explicit model and effort instructions first, then a compatible configured role, then the table. Keep native profiles unchanged; pinned settings may override invocation arguments. If exact requested settings are unavailable or conflict with provider restrictions, leave that assignment pending for the user's decision and continue independent authorized work. For an unavailable preference, use the parent where suitable and disclose the fallback. Resolve material cost changes before dispatch.
+Use explicit model and effort instructions first, then the Models table in `.slime/config.md` if present, then a compatible configured role, then the table below. When `.slime/config.md` is missing, say once: "No `.slime/config.md`; run great-sage-setup to set models per project." Keep native profiles unchanged; pinned settings may override invocation arguments. If exact requested settings are unavailable or conflict with provider restrictions, leave that assignment pending for the user's decision and continue independent authorized work. For an unavailable preference, use the parent where suitable and disclose the fallback. Resolve material cost changes before dispatch.
 
 ### Preferred lineup
 
@@ -25,7 +25,7 @@ Resolve `gpt-6-luna`, `gpt-6.1-sol`, or Claude's `haiku`, `sonnet`, and `opus` a
 ## Keep usage proportionate
 
 - Keep coordination with the parent. Use one child unless independent tasks justify two; normally cap concurrency at two.
-- Choose sufficient capability at the start. Raising effort needs a concrete reason; provider or cost changes outside approved choices need the user's decision. Repeated failure calls for testing shared assumptions, not automatic escalation. Multi-provider councils require explicit provider authorization.
+- Choose sufficient capability at the start. Raising effort needs a concrete reason; provider or cost changes outside approved choices need the user's decision. Repeated failure calls for testing shared assumptions, not automatic escalation. Multi-provider councils (octagram-council) require explicit provider authorization.
 - Give fresh children the outcome, separate ownership, constraints, relevant memory and findings, checked code state, completed checks, and deliverable. Writers preserve others' changes. Children report further delegation needs to the parent.
 
 ## Use the current host

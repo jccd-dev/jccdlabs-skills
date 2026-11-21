@@ -1,0 +1,6 @@
+interface:
+  display_name: "Shion — PR"
+  short_description: "File, check, and review pull requests"
+  default_prompt: "Use $shion-pr to file a pull request for this branch."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Great Sage — Setup"
+  short_description: "Write this repo's .slime/config.md for the collection"
+  default_prompt: "Use $great-sage-setup to set up this repository."
+policy:
+  allow_implicit_invocation: false

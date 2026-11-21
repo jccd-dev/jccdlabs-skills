@@ -20,6 +20,14 @@ Extra skill loads and review passes cost time and tokens, so scale the procedure
 2. Read the owner, callers, project instructions, and existing coverage. Identify affected contracts, tests, fixtures, configuration, and exports. Reuse valid evidence when resuming.
 3. Reproduce a bug before editing. Fix the shared cause at its owning boundary. Reuse existing architecture and dependencies; add an abstraction or dependency only for a current requirement. Preserve validation, error handling, and unrelated work.
 
+## Comments
+
+Follow the comment policy in `.slime/config.md` if present; the default is why-only.
+
+- Write no comment that repeats what the code shows, and no comment that excuses a hack. Fix the hack, or name the shortcut in the report.
+- Delete or update any comment the change makes stale.
+- Put a non-obvious decision in the commit or PR body, or in an ADR where the repository keeps them. Under why-only, a one-line comment may keep a why a reader would otherwise get wrong. Under none, write no comments.
+
 ## Tests
 
 Use TDD for bug fixes when a failing test is cheap to write at a real public interface, and whenever the user says "use TDD". Running the fix by hand doesn't replace that test. Write one behavioral test with an expectation derived independently of the code, watch it fail for the intended reason, implement just enough to pass, and repeat. Don't batch tests first. Claim a red-green cycle only when both were observed. Test quality follows `shuna-test-triage` when it is installed.
@@ -51,7 +59,7 @@ When the user must run something, such as on a server or in a dashboard, give co
 
 ## Finish
 
-When a plan slice is verified, tick its checkbox and add one line of evidence (checks run, commit) in the same commit as the code, before the next slice. When every slice is done, say the plan file is ready to close and offer to remove it.
+When a plan slice is verified, tick its checkbox and add one line of evidence (checks run, commit) in the same commit as the code, before the next slice. When every slice is done, follow the plan rule in `.slime/config.md` if present (delete, keep, or move); otherwise say the plan file is ready to close and offer to remove it.
 
 For work continuing in another session, give the code state, completed work, checks run, open findings, and next action.
 
