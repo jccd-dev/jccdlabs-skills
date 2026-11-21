@@ -26,8 +26,12 @@ For one clear fix or question, Rimuru adds only a skill load. Do the work direct
 | Prove requested behavior | ranga-verifier |
 | Decide coverage and test scope | shuna-test-triage |
 | Create a reusable verification procedure | kaijin-verification-builder |
+| File, check, or review a PR | shion-pr |
+| Ship a change to a PR ready to merge | gobta-shipper |
+| Multi-model review on request | octagram-council |
+| Set up `.slime/config.md` for a repository | great-sage-setup |
 
-Load a skill only when its phase starts, once per task. Name the transition in one line, such as "Plan agreed → Kurobe, slice 1." Skip unneeded phases: clear work goes straight to Kurobe, which sizes its own checks. If a skill is unavailable, say so and use project guidance.
+Load a skill only when its phase starts, once per task. Name the transition in one line, such as "Plan agreed → Kurobe, slice 1." Skip unneeded phases: clear work goes straight to Kurobe, which sizes its own checks. If a skill is unavailable, say so and use project guidance. If the repository has no `.slime/config.md`, mention great-sage-setup once per task.
 
 On risky work, verify before review, so review can focus on what running the code can't show.
 
@@ -54,6 +58,6 @@ Reuse findings and checks that still hold for the current code. Repeat a check o
 
 ## Finish
 
-Report the result, checks run, and anything pending.
+Report the result, checks run, and anything pending. When the work belongs in a PR and the user asked for one, file it with shion-pr and run its check before merge.
 
-For work continuing in another session, give a short handoff: revision and uncommitted changes, current slice or completed work, checks with results, open decisions, and next action. Update an existing plan file or handoff instead of creating a new one; write a file only when authorized. On resume, compare the handoff with the current code before reusing its evidence.
+For work continuing in another session, give a short handoff: revision and uncommitted changes, current slice or completed work, checks with results, open decisions, and next action. Save handoffs where `.slime/config.md` says if present, else in chat. Update an existing plan file or handoff instead of creating a new one; write a file only when authorized. On resume, compare the handoff with the current code before reusing its evidence.

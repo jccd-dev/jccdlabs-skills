@@ -1,6 +1,6 @@
 # JCCDLabs Skills
 
-Eight concise development skills for choosing a workflow, planning, implementing, investigating, reviewing, and verifying software. Names draw from Rimuru's companions in *That Time I Got Reincarnated as a Slime*. Function labels stay explicit; the instructions focus on engineering rather than roleplay.
+Twelve concise development skills for choosing a workflow, planning, implementing, investigating, reviewing, verifying, and shipping software through pull requests. Names draw from Rimuru's companions in *That Time I Got Reincarnated as a Slime*. Function labels stay explicit; the instructions focus on engineering rather than roleplay.
 
 ## Install
 
@@ -16,7 +16,7 @@ Install interactively and choose your skills and agents:
 npx skills add jccd-dev/jccdlabs-skills
 ```
 
-Install all eight for Codex, Claude Code, and OpenCode in the current project:
+Install all twelve for Codex, Claude Code, and OpenCode in the current project:
 
 ```sh
 npx skills add jccd-dev/jccdlabs-skills --skill '*' -a codex -a claude-code -a opencode
@@ -26,7 +26,7 @@ Add `-g` for personal installation across projects. The installer also supports 
 
 ## Choose a skill
 
-Start with the [practical usage guide](GUIDE.md): everyday prompts, when each skill helps, what to expect, and how to adjust it from experience. Rimuru is the usual entry point; specialist skills are optional direct choices. The [scenario prompt collection](PROMPTS.md) provides copyable prompts for all eight skills, including work started or completed by another agent.
+Start with the [practical usage guide](GUIDE.md): everyday prompts, when each skill helps, what to expect, and how to adjust it from experience. Rimuru is the usual entry point; specialist skills are optional direct choices. The [scenario prompt collection](PROMPTS.md) provides copyable prompts for the original eight skills, including work started or completed by another agent.
 
 These character-to-workflow matches are this project's interpretation of the [official character profiles](https://www.ten-sura.com/character).
 
@@ -40,8 +40,12 @@ These character-to-workflow matches are this project's interpretation of the [of
 | [ranga-verifier](skills/ranga-verifier/SKILL.md) | Prove requested behavior | Ranga's protective role | jc-verify |
 | [shuna-test-triage](skills/shuna-test-triage/SKILL.md) | Choose meaningful coverage and test scope | Shuna's careful craft and support | test-scope-triage |
 | [kaijin-verification-builder](skills/kaijin-verification-builder/SKILL.md) | Write and exercise a project verification procedure | Kaijin's workshop craftsmanship | jc-create-verification |
+| [shion-pr](skills/shion-pr/SKILL.md) | File, check, and review pull requests | Shion, Rimuru's secretary | new |
+| [gobta-shipper](skills/gobta-shipper/SKILL.md) | Ship a change to a PR ready to merge | Gobta's eager, hands-on runs | new |
+| [octagram-council](skills/octagram-council/SKILL.md) | Score work with three models from different providers | The Octagram, Tempest's council of lords | new |
+| [great-sage-setup](skills/great-sage-setup/SKILL.md) | Write a repository's `.slime/config.md` | Great Sage, Rimuru's analysis skill | new |
 
-Ask for a skill by its short or full name in ordinary text: "Use Kurobe to implement this change" or "Use rimuru-coordinator to choose the workflow." All eight descriptions include both names; no `$` or `/` prefix is required for skill invocation in a compatible harness. Use a request to apply the skill; asking what a skill does remains an explanation request.
+Ask for a skill by its short or full name in ordinary text: "Use Kurobe to implement this change" or "Use rimuru-coordinator to choose the workflow." All descriptions include both names; no `$` or `/` prefix is required for skill invocation in a compatible harness. Use a request to apply the skill; asking what a skill does remains an explanation request.
 
 Install the skills in a location your harness discovers. [Codex](https://learn.chatgpt.com/docs/build-skills) allows implicit invocation through `agents/openai.yaml`; [Claude Code](https://code.claude.com/docs/en/skills) allows model invocation by default; [OpenCode](https://opencode.ai/docs/skills/) lists skill names and descriptions for its agent to select through the `skill` tool. Other Agent Skills-compatible harnesses can use the same descriptions. Selection depends on the model and host settings; native skill selectors remain available when you need explicit loading.
 
@@ -49,11 +53,24 @@ Benimaru restates the goal and problem, asks the open decisions with recommended
 
 Kurobe sizes its own procedure: small, clear changes run checks inline without loading other skills, while larger or risky work uses Shuna, Ranga, or Hakuro for the part that needs it. TDD is used for bug fixes when a failing test is cheap, and whenever requested. Kurobe owns the red-green loop and Shuna owns test quality, so no outside TDD skill is needed.
 
-Every skill runs in a single agent by default. The one built-in exception is Hakuro, which reviews a risky change the same agent wrote in a fresh subagent. Ideas from [Matt Pocock's skills](https://github.com/mattpocock/skills) and [pstack](https://github.com/cursor/plugins/tree/main/pstack) are adapted without their subagent panels.
+Every skill runs in a single agent by default. The built-in exceptions are Hakuro, which reviews a risky change the same agent wrote in a fresh subagent, and Octagram, which runs three council members by design. Ideas from [Matt Pocock's skills](https://github.com/mattpocock/skills) and [pstack](https://github.com/cursor/plugins/tree/main/pstack) are adapted without their subagent panels.
 
-Install the whole collection for sibling procedures to be available. Individually installed skills have fallbacks for missing helpers. All eight allow model-initiated skill invocation; Shuna uses Codex's default policy. The shared skill files use standard `name` and `description` fields, with no Claude-only invocation restrictions. Loading a skill does not expand the task's editing or execution authority.
+Install the whole collection for sibling procedures to be available. Individually installed skills have fallbacks for missing helpers. All skills allow model-initiated invocation in Claude Code; in Codex, Shuna uses the default policy, and Octagram, Gobta, and Great Sage run only when named, because they cost several model runs, push branches, or write config. The shared skill files use standard `name` and `description` fields, with no Claude-only invocation restrictions. Loading a skill does not expand the task's editing or execution authority.
 
 Skills select procedures, not execution models. Rimuru's [delegation preferences](skills/rimuru-coordinator/references/delegation.md) favor the parent's provider and proportionate model effort when a separate agent helps. Native agent settings control execution; the collection does not install or modify them. See [model preferences and host setup](GUIDE.md#model-preferences-and-host-setup) for direct skill use and host differences.
+
+## Per-project config
+
+Each repository can hold a `.slime/` folder that the skills read instead of fixed defaults:
+
+```
+.slime/
+├── config.md    # plans, handoffs, checks, comments, verification folder, PRs, models, Octagram
+├── plans/       # Benimaru writes, Kurobe ticks
+└── handoffs/    # only when handoffs are saved as files
+```
+
+Run great-sage-setup once per repository. It pre-fills answers from the repository and its PR history, asks one section at a time, and shows the draft before writing. Commit `.slime/` in a solo repository; gitignore it where others open PRs. Without a config, every skill keeps its built-in default.
 
 ## Update or remove
 
@@ -86,6 +103,8 @@ codex plugin add jccdlabs-skills@jccdlabs-skills
 The plugin supplies no connectors or extra permissions. Refresh its source with `codex plugin marketplace upgrade jccdlabs-skills`, then use your host's plugin update flow.
 
 ## Status
+
+Version 0.9.0 adds a pull-request workflow and per-project config. Shion files PRs (problem first, then Evidence, Merge danger, and a model line), checks one before merge with a ready or blocked verdict, and reviews other authors' PRs by feature area with risk flags, posting drafted comments only when told. Gobta carries a change through Ranga, Hakuro, push, and Shion, then stops at the merge gate. Octagram runs a three-provider council that scores out of 10, loops until satisfied, and rejects scope creep. Great Sage writes `.slime/config.md`, which Benimaru, Kurobe, Kaijin, Ranga, and Rimuru now read for plan paths, checks, handoffs, and models. Kurobe stops writing comments that repeat the code or excuse a hack and removes ones its change makes stale; Hakuro flags them in review and can audit a folder's comments on request, following Matt Pocock's tautology, excuse, stale, and decision-record split. The comment policy is why-only by default, or none per project. PR, council, and comment conventions are adapted from Theo Browne's [tstack](https://github.com/t3dotgg/tstack) (MIT); its polling scripts were left out. The new skills have not been exercised on real tasks yet.
 
 Version 0.8.0 makes the collection self-contained for TDD: Kurobe runs the red-green loop itself, takes test-first requests, and follows Shuna for test quality instead of loading an outside `tdd` skill. Hakuro maps each changed file's inputs, queries, auth checks, sessions, external calls, and cryptography, reports security findings only for attacker-controlled values the framework doesn't already mitigate, loads an installed `security-review` skill at trust boundaries, and lists what it read and couldn't verify. Soei compares the failing path with similar working code and logs component boundaries to find the layer that breaks. Kurobe checks a subagent's diff before repeating its success claim. Ideas adapted from [Sentry's skills](https://github.com/getsentry/skills) and [Superpowers](https://github.com/obra/superpowers). All eight skills pass [SkillEvaluator](https://github.com/NVIDIA/SkillEvaluator) 1.0.1 Tier 1 checks without a model (schema, security, PII, license, quality grade B, and loading in six harnesses); deduplication and live agent evaluation have not been run.
 

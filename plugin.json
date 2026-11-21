@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "jccdlabs-skills",
-  "version": "0.8.0",
-  "description": "Eight concise development workflows inspired by Rimuru's companions.",
+  "version": "0.9.0",
+  "description": "Twelve concise development workflows inspired by Rimuru's companions.",
   "author": {
     "name": "JC",
     "url": "https://github.com/jccd-dev"

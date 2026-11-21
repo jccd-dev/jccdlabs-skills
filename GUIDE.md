@@ -2,7 +2,7 @@
 
 ## Start here
 
-Use **Rimuru** when you want the agent to choose the workflow. You do not need to remember all eight skills or run them in sequence. Mention a specialist directly when you already know the job.
+Use **Rimuru** when you want the agent to choose the workflow. You do not need to remember all twelve skills or run them in sequence. Mention a specialist directly when you already know the job.
 
 Describe the outcome, the problem, and real constraints. Let the agent recommend an implementation. If you already have an idea, say whether it is a requirement or a suggestion it may challenge.
 

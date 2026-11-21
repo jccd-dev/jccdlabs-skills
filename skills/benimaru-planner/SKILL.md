@@ -49,7 +49,7 @@ Scale detail to the task. Small work gets a few lines.
 - Ordered steps, each with the check that proves it.
 - For work too large for one reliable session, split it into the fewest slices that can each be built and checked alone. Give each an outcome, dependencies, and completion check.
 
-To save the plan, write one Markdown file at the requested path, or under `docs/plans/YYYY-MM-DD-<slug>.md` by default, with a checkbox per slice for implementation to tick:
+To save the plan, write one Markdown file at the requested path, else in the plans folder from `.slime/config.md` if present, else under `docs/plans/`, named `YYYY-MM-DD-<slug>.md`, with a checkbox per slice for implementation to tick:
 
 ```markdown
 # <Title>

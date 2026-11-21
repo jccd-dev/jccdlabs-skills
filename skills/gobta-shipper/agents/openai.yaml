@@ -1,0 +1,6 @@
+interface:
+  display_name: "Gobta — Ship"
+  short_description: "Prove, review, push, and file a change, then stop at the merge gate"
+  default_prompt: "Use $gobta-shipper to ship this change."
+policy:
+  allow_implicit_invocation: false

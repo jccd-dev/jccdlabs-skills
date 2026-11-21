@@ -1,0 +1,6 @@
+interface:
+  display_name: "Octagram — Council"
+  short_description: "Score work with three models from different providers"
+  default_prompt: "Use $octagram-council to review this with the council."
+policy:
+  allow_implicit_invocation: false
