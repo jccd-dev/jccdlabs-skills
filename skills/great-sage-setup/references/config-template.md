@@ -35,7 +35,7 @@ Read by the JCCDLabs skills. Edit by hand or rerun great-sage-setup. A missing s
 ## Models
 | Work | Model | Effort |
 | --- | --- | --- |
-| Mechanical edits, routine checks | Haiku | low |
+| Mechanical edits, code mapping, test runs, log reading | Haiku | low |
 | Bounded investigation, routine implementation and review | Sonnet | medium |
 | Complex planning, hard diagnosis, risky review | Opus | high |
 

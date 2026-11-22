@@ -17,7 +17,7 @@ Extra skill loads and review passes cost time and tokens, so scale the procedure
 ## Inspect and implement
 
 1. With a plan file, read it, state the slice title, and work only that slice. Don't redo a ticked slice.
-2. Read the owner, callers, project instructions, and existing coverage. Identify affected contracts, tests, fixtures, configuration, and exports. Reuse valid evidence when resuming.
+2. Read the owner, callers, project instructions, and existing coverage. Identify affected contracts, tests, fixtures, configuration, and exports. Reuse valid evidence when resuming. When this spans many files or the owner is unknown, hand the mapping to a read-only subagent with a fresh context window on the cheapest model from this agent's provider (such as Haiku or Luna), or the user's own agent for the job, and ask for `path:line` findings.
 3. Reproduce a bug before editing. Fix the shared cause at its owning boundary. Reuse existing architecture and dependencies; add an abstraction or dependency only for a current requirement. Preserve validation, error handling, and unrelated work.
 
 ## Comments
@@ -46,7 +46,7 @@ Fix failures the change caused and rerun until checks pass or a concrete blocker
 
 ## Verify
 
-Run applicable typechecks and focused tests while working, and the full suite once at the end when safe. Map each requested behavior to observed evidence or a stated pending reason. When a subagent reports success, check its diff and rerun its checks before repeating the claim. Don't claim completion with "should", "probably", or "seems to". For larger changes, check the diff for scope, data, authorization, and concurrency risks before finishing.
+Run applicable typechecks and focused tests while working, and the full suite once at the end when safe. Run a full suite, lint, or build with long output in a subagent with a fresh context window on the cheapest model from this agent's provider, or the user's own runner agent; it returns the exit code and failing output verbatim, and this agent diagnoses. Run a single fast test directly. Map each requested behavior to observed evidence or a stated pending reason. When a subagent reports success, check its diff and rerun its checks before repeating the claim. Don't claim completion with "should", "probably", or "seems to". For larger changes, check the diff for scope, data, authorization, and concurrency risks before finishing.
 
 ## Commands the user runs
 
