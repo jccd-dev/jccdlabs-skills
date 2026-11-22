@@ -1,0 +1,12 @@
+{
+  "name": "jccdlabs-skills",
+  "version": "0.9.0",
+  "description": "Twelve concise development workflows inspired by Rimuru's companions.",
+  "author": {
+    "name": "JC",
+    "url": "https://github.com/jccd-dev"
+  },
+  "homepage": "https://github.com/jccd-dev/jccdlabs-skills",
+  "repository": "https://github.com/jccd-dev/jccdlabs-skills",
+  "license": "MIT"
+}

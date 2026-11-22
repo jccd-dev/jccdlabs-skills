@@ -12,7 +12,7 @@ Use explicit model and effort instructions first, then the Models table in `.sli
 
 | Work | Codex preference | Claude preference |
 | --- | --- | --- |
-| Mechanical edits, routine command checks | GPT-6 Luna, low | Haiku, low |
+| Mechanical edits, code mapping, test runs, log reading | GPT-6 Luna, low | Haiku, low |
 | Bounded investigation, test-scope decisions | GPT-6 Luna, medium | Sonnet, medium |
 | Routine implementation | GPT-6.1 Sol, low | Sonnet, medium |
 | Routine review, reusable verification procedures | GPT-6.1 Sol, medium | Sonnet, medium |

@@ -1,0 +1,15 @@
+{
+  "name": "jccdlabs-skills",
+  "owner": {
+    "name": "JC",
+    "url": "https://github.com/jccd-dev"
+  },
+  "plugins": [
+    {
+      "name": "jccdlabs-skills",
+      "source": "./",
+      "description": "Twelve concise development workflows inspired by Rimuru's companions.",
+      "category": "development"
+    }
+  ]
+}

@@ -44,7 +44,7 @@ Leave license headers, directives (`eslint-disable`, `@ts-expect-error`, type an
 
 After fixes, review the new diff and affected behavior. Reopen a resolved finding only with new evidence. After two re-review rounds on the same finding, name the unresolved issue and stop.
 
-An agent reviewing its own change is biased toward it. When this agent wrote the change and it carries authorization, data-loss, concurrency, or compatibility risk, run the review in a fresh subagent where the host has one. Use a model at least as capable as the one that wrote the change. Give it the comparison base, the request, and the standards, and leave this conversation out. Check each finding it returns before acting on it. Without a subagent, review inline and say that a fresh session would be more independent.
+An agent reviewing its own change is biased toward it. When this agent wrote the change and it is more than a few lines in one file, or carries authorization, data-loss, concurrency, or compatibility risk, run the review in a subagent with a fresh context window where the host has one. Use a model at least as capable as the one that wrote the change. Give it pointers, not this conversation: the comparison base or diff command, the request or plan file, and the standards files. Check each finding it returns before acting on it. Without a subagent, review inline and say that a fresh session would be more independent.
 
 ## Finish
 

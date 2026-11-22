@@ -45,12 +45,15 @@ Look up facts directly. Ask the user only about behavior, scope, cost, or author
 
 ## Keep it cheap
 
-Stay in one agent by default. Every subagent starts cold, re-reading the skill, project instructions, and code first. On small work that start-up cost exceeds the task, so a Haiku subagent can cost more than working inline with the parent model. Delegation saves money only when a large independent job (a wide repo scan, a long browser session) returns a short result.
+Stay in one agent for small work. Every subagent starts cold, re-reading the skill, project instructions, and code first. On small work that start-up cost exceeds the task, so a Haiku subagent can cost more than working inline with the parent model. Delegation saves money only when a large independent job returns a short result.
 
 - When the user names a model or asks for delegation in this conversation ("use Sonnet 5.5 high", "use Haiku for the browser"), do it and confirm the model in one line.
 - Follow standing delegation instructions for the host, such as T3 Code's `delegate_task`.
-- Hakuro reviews a risky change this agent wrote in a fresh subagent, because an author is biased toward its own work.
-- Otherwise delegate only for a large independent job like those above, and give the reason in one line first.
+- Hakuro reviews a non-trivial change this agent wrote in a subagent with a fresh context window, because an author is biased toward its own work.
+- Mechanical jobs with long output go to a subagent with a fresh context window on the cheapest model from this agent's provider (Haiku on Claude, Luna on Codex): mapping many files, running a full suite, lint, or build, and reading long logs. It reports facts; this agent decides.
+- When the user already has an agent for the job, use it instead of a generic one.
+- Pass pointers (paths, the diff command, the plan file) rather than pasted content.
+- Otherwise delegate only for a large independent job, such as a long browser session, and give the reason in one line first.
 
 A model or provider preference from an earlier session, including one saved in memory, applies only when the user said it always applies. Read [delegation preferences](references/delegation.md) before any dispatch; it covers models and host rules.
 

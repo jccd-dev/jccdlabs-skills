@@ -19,7 +19,7 @@ Restate briefly, without copying the request:
 
 Mark assumptions. Treat the user's implementation ideas as suggestions to evaluate unless stated as requirements. When the request, docs, and code disagree, name the conflict instead of blending them.
 
-Then read the relevant code, docs, and callers. Find facts directly: if a read or command can answer it, don't ask. Ask the user only about intent, scope, behavior, cost, or authority.
+Then read the relevant code, docs, and callers. When that means many files or an unknown owner, hand the mapping to a read-only subagent with a fresh context window on the cheapest model from this agent's provider (such as Haiku or Luna), or the user's own agent for the job, and ask for `path:line` findings, not file dumps. Read one or two known files directly. Find facts directly: if a read or command can answer it, don't ask. Ask the user only about intent, scope, behavior, cost, or authority.
 
 ## 2. Ask before proposing
 

@@ -9,7 +9,7 @@ Establish what fails, where, and the best-supported cause. Keep the project read
 
 ## Steps
 
-1. **Preserve the evidence.** Record symptoms, exact output, environment, and recent changes. Redact secrets. Read the owning code and callers.
+1. **Preserve the evidence.** Record symptoms, exact output, environment, and recent changes. Redact secrets. Read the owning code and callers. A slow suite or long log can go to a subagent with a fresh context window on the cheapest model from this agent's provider, or the user's own runner agent, that returns the exact failing lines verbatim; ranking causes stays here.
 2. **Build a feedback loop.** Find the smallest safe check that shows the failure, such as a test, script, curl, or browser step. Without a loop that can fail, every theory is a guess; if none can be built, say so and use existing evidence.
 3. **Compare and localize.** Find similar code that works and list its differences from the failing path, however small. When the failure crosses components, such as CI to build to signing or API to service to database, log what enters and leaves each boundary and run once to find the layer that breaks.
 4. **Rank hypotheses.** Write 3–5 plausible causes, most likely first, each with the observation that would disprove it.

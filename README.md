@@ -53,7 +53,7 @@ Benimaru restates the goal and problem, asks the open decisions with recommended
 
 Kurobe sizes its own procedure: small, clear changes run checks inline without loading other skills, while larger or risky work uses Shuna, Ranga, or Hakuro for the part that needs it. TDD is used for bug fixes when a failing test is cheap, and whenever requested. Kurobe owns the red-green loop and Shuna owns test quality, so no outside TDD skill is needed.
 
-Every skill runs in a single agent by default. The built-in exceptions are Hakuro, which reviews a risky change the same agent wrote in a fresh subagent, and Octagram, which runs three council members by design. Ideas from [Matt Pocock's skills](https://github.com/mattpocock/skills) and [pstack](https://github.com/cursor/plugins/tree/main/pstack) are adapted without their subagent panels.
+Small work stays in one agent. Hakuro reviews a non-trivial change the same agent wrote in a subagent with a fresh context window, Octagram runs three council members by design, and Benimaru, Kurobe, Ranga, and Soei hand wide code mapping, long test runs, and long logs to a subagent on the cheapest model from the parent's provider (Haiku on Claude, Luna on Codex). The skills describe the job in prose and ship no agent definitions, so your own subagents are used when they fit. Ideas from [Matt Pocock's skills](https://github.com/mattpocock/skills) and [pstack](https://github.com/cursor/plugins/tree/main/pstack) are adapted without their subagent panels.
 
 Install the whole collection for sibling procedures to be available. Individually installed skills have fallbacks for missing helpers. All skills allow model-initiated invocation in Claude Code; in Codex, Shuna uses the default policy, and Octagram, Gobta, and Great Sage run only when named, because they cost several model runs, push branches, or write config. The shared skill files use standard `name` and `description` fields, with no Claude-only invocation restrictions. Loading a skill does not expand the task's editing or execution authority.
 
@@ -90,6 +90,17 @@ To maintain the source, edit `skills/<name>/SKILL.md` in your clone, review the 
 This collection contains Markdown instructions and declarative metadata. It ships no executable scripts, package lifecycle hooks, agent hooks, MCP servers, credentials, or downloaded assets. Installation does not require an API key or permission to run a project's commands. Using a skill remains subject to your agent's permissions and your project's instructions.
 
 `npx` executes a third-party installer. For a reproducible installer version, the checked command is `npx skills@1.7.2 add jccd-dev/jccdlabs-skills --list`. You can disable installer telemetry with `DISABLE_TELEMETRY=1`; see the [CLI documentation](https://skills.sh/docs/cli). Review updates before granting an agent access to sensitive projects. Instruction-only skills still influence agent behavior; this is not a sandbox or a guarantee against mistakes.
+
+## Optional Claude Code plugin
+
+`.claude-plugin/` packages the same skills as a Claude Code plugin. It ships no agent definitions, so it never conflicts with your own subagents.
+
+```sh
+claude plugin marketplace add jccd-dev/jccdlabs-skills
+claude plugin install jccdlabs-skills@jccdlabs-skills
+```
+
+Use one installation route per host to avoid duplicate skills.
 
 ## Optional Codex plugin
 
