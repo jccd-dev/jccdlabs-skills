@@ -156,7 +156,8 @@ Keep small work in the parent and use one child when its separate contribution i
 | A stable project rule, such as required checks or protected data | The project's existing instructions |
 | A repeated workflow mistake across projects | The relevant `SKILL.md` |
 | Display text or supported Codex invocation settings | That skill's `agents/openai.yaml` |
-| Shared delegation behavior and preferred work levels | Rimuru's `references/delegation.md` |
+| Shared delegation behavior | Rimuru's `references/delegation.md` |
+| Per-project models and Octagram members | `.slime/config.md` (great-sage-setup) |
 | Exact execution models, effort, and role overrides | Your host's native agent configuration |
 
 For a skill change, record the task, expected behavior, actual behavior, and consequence. Change the narrowest relevant instruction. Compare similar tasks with the same model and starting state, including a case where extra process should be unnecessary. Keep a change only when outcomes support it; word matching and attractive formatting do not establish effectiveness.

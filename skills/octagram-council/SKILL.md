@@ -11,7 +11,7 @@ It costs three strong runs per round. It pays off on frontend design and UX, pla
 
 ## Members
 
-Read `.slime/config.md` if present for members, effort, allowed hosts, and max rounds. Otherwise use the user's named members, or the latest flagship from each of three providers at high effort (for example Claude Opus, GPT Sol, Gemini Pro), and 3 rounds.
+Read the Octagram section of `.slime/config.md` if present for members, effort, and max rounds. Otherwise use the user's named members, or the latest flagship from each of three providers at high effort (for example Claude Opus, GPT Sol, Gemini Pro), and 3 rounds.
 
 - In T3 Code, resolve the models with `orchestrator_capabilities`, then start one `delegate_task` per member in parallel.
 - In Claude Code, the Claude desktop app, or any host where outside providers need permission, run only when the user explicitly asked for these providers in this conversation.

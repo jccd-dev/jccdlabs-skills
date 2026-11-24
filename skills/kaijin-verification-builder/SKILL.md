@@ -10,7 +10,7 @@ Create a reusable verification skill based on the project's real environment. Re
 ## Steps
 
 1. Inspect the requested app surfaces, launch commands, readiness signals, existing checks and drivers, authentication needs, safe targets, fixtures, and cleanup. Confirm commands from the repository or tool docs.
-2. Write a compact project SKILL.md in the verification folder from `.slime/config.md` if present, else the host's supported project location. Map each relevant journey to launch, drive, observable assertions, evidence output, and cleanup. Include prerequisites, precise failure signals, and when each check applies. Separate required from conditional checks so ordinary changes don't trigger every journey. Move long conditional detail into referenced files.
+2. Write a compact project SKILL.md in the host's supported project location. Map each relevant journey to launch, drive, observable assertions, evidence output, and cleanup. Include prerequisites, precise failure signals, and when each check applies. Separate required from conditional checks so ordinary changes don't trigger every journey. Move long conditional detail into referenced files.
 3. Run one representative safe journey from the written procedure, within task permissions. Confirm evidence survives cleanup. If it can't run, mark the procedure unverified and record the exact blocker.
 
 ## Coverage

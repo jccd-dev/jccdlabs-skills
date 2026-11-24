@@ -5,7 +5,7 @@ description: File a pull request, check whether one is ready to merge, or review
 
 # Shion: Pull Requests
 
-Three jobs: file the user's PR, check a PR before merge, and review another author's PR. Read `.slime/config.md` if present for the base branch, merge method, who merges, and check commands; otherwise use the repository's default branch and its recent merged PRs as the convention.
+Three jobs: file the user's PR, check a PR before merge, and review another author's PR. Use the repository's default branch and its recent merged PRs as the convention for base branch and merge method, and project guidance and scripts for check commands.
 
 Never merge, approve, post a comment, or push unless the user asked for that action in this conversation.
 
@@ -46,14 +46,14 @@ Report each item as pass, fail, or unknown with its evidence:
 - The diff still matches what the title and body claim.
 - Required reviews are present when the repository requires them.
 
-Verdict: **ready**, or **blocked** with the failing items. Stop there. Merge only when the user says to, with the configured merge method.
+Verdict: **ready**, or **blocked** with the failing items. Stop there. Merge only when the user says to, with the repository's merge method.
 
 ## Review another author's PR
 
 1. Read the PR description, the full diff, and the code it touches. Note the base branch and size.
 2. Summarize by feature area, not file by file: what each area now does differently.
 3. Flag risk areas: authentication and authorization, payments and money, migrations and data changes, deletions, and public API changes.
-4. Review with hakuro-reviewer. Use octagram-council instead only when the user asks or the config allows it and the PR is large or touches a flagged area; say which in one line.
+4. Review with hakuro-reviewer. Use octagram-council instead only when the user asks; say which in one line.
 5. Give a verdict: approve, approve with comments, or request changes, with the findings behind it.
 6. Draft the comments. Show them to the user and post only after the user says to post.
 

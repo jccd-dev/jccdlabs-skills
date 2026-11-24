@@ -6,21 +6,11 @@ Apply task and explicit standing delegation instructions before these model pref
 
 Default to the parent's provider unless the user selects another in the current conversation. Distinguish host from provider: T3 Code running Claude is a T3 host with a Claude provider. In Claude Code or the Claude desktop app, never route work to another provider (Codex, GPT, Gemini, `codex exec`) unless the user asks for it in that conversation; in T3 Code, cross-provider `delegate_task` is expected.
 
-Use explicit model and effort instructions first, then the Models table in `.slime/config.md` if present, then a compatible configured role, then the table below. When `.slime/config.md` is missing, say once: "No `.slime/config.md`; run great-sage-setup to set models per project." Keep native profiles unchanged; pinned settings may override invocation arguments. If exact requested settings are unavailable or conflict with provider restrictions, leave that assignment pending for the user's decision and continue independent authorized work. For an unavailable preference, use the parent where suitable and disclose the fallback. Resolve material cost changes before dispatch.
-
-### Preferred lineup
-
-| Work | Codex preference | Claude preference |
-| --- | --- | --- |
-| Mechanical edits, code mapping, test runs, log reading | GPT-6 Luna, low | Haiku, low |
-| Bounded investigation, test-scope decisions | GPT-6 Luna, medium | Sonnet, medium |
-| Routine implementation | GPT-6.1 Sol, low | Sonnet, medium |
-| Routine review, reusable verification procedures | GPT-6.1 Sol, medium | Sonnet, medium |
-| Complex planning, difficult diagnosis, consequential review or implementation | GPT-6.1 Sol, high | Opus, high |
+Use explicit model and effort instructions first, then the Models table in `.slime/config.md` for the parent's provider, then a compatible configured role, then the Models table in [great-sage-setup's config template](../../great-sage-setup/references/config-template.md). When `.slime/config.md` is missing, say once: "No `.slime/config.md`; run great-sage-setup to set models per project." Keep native profiles unchanged; pinned settings may override invocation arguments. If exact requested settings are unavailable or conflict with provider restrictions, leave that assignment pending for the user's decision and continue independent authorized work. For an unavailable preference, use the parent where suitable and disclose the fallback. Resolve material cost changes before dispatch.
 
 Classify actual work, not the skill name. Command-only verification is routine; interactive verification needs bounded investigation. Review concrete authorization, data-loss, concurrency, or compatibility risks as consequential work. A lower work level needs evidence of simpler work, not merely tool availability.
 
-Resolve `gpt-6-luna`, `gpt-6.1-sol`, or Claude's `haiku`, `sonnet`, and `opus` aliases against models and effort levels exposed by the host. Other hosts may require provider-qualified IDs. This table does not establish price, access, or measured quality.
+Resolve model names such as `gpt-6-luna`, `gpt-6.1-sol`, or Claude's `haiku`, `sonnet`, and `opus` aliases against models and effort levels exposed by the host. Other hosts may require provider-qualified IDs. The table does not establish price, access, or measured quality.
 
 ## Keep usage proportionate
 
