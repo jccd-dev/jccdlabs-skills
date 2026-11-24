@@ -9,7 +9,7 @@ Prove the requested behavior against conditions from the request and project req
 
 ## Steps
 
-1. Read project guidance, `.slime/config.md` if present (check commands and known failures), existing checks, and any verification procedure. Before running anything, confirm its target, effects, dependencies, and whether its test data stays.
+1. Read project guidance, existing checks, and any verification procedure. Before running anything, confirm its target, effects, dependencies, and whether its test data stays.
 2. Run the project's typecheck, lint, and existing tests first. When a failure touches the work being verified, report it and stop before any hands-on check. Run checks with long output in a subagent with a fresh context window on the cheapest model from this agent's provider (such as Haiku or Luna), or the user's own runner agent; it returns the exit code and failing output verbatim, and this agent judges the result.
 3. Give each condition the smallest check that proves it, within task permissions, using the table below. Prefer existing browser or app coverage, then a safe hands-on check for remaining visible behavior.
 4. Inspect the real result or user journey. A build or typecheck proves only what it checks; reading code isn't running it. Skipped tests count as not run. Save evidence before cleaning up anything the task created.

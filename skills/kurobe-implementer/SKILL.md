@@ -22,11 +22,9 @@ Extra skill loads and review passes cost time and tokens, so scale the procedure
 
 ## Comments
 
-Follow the comment policy in `.slime/config.md` if present; the default is why-only.
-
-- Write no comment that repeats what the code shows, and no comment that excuses a hack. Fix the hack, or name the shortcut in the report.
+- Add no code comments. Fix a hack instead of excusing it, or name the shortcut in the report.
 - Delete or update any comment the change makes stale.
-- Put a non-obvious decision in the commit or PR body, or in an ADR where the repository keeps them. Under why-only, a one-line comment may keep a why a reader would otherwise get wrong. Under none, write no comments.
+- Put a non-obvious decision in the commit or PR body, or in an ADR where the repository keeps them.
 
 ## Tests
 

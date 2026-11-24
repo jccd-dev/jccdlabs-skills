@@ -14,7 +14,7 @@ Review the requested diff and the behavior it affects in one read-only pass.
    - **Request:** does the change do what was asked, and nothing it shouldn't?
    - **Correctness:** validation, authorization, data loss, concurrency, compatibility, and error handling, wherever the change touches them.
 3. Check affected trust boundaries for authentication and authorization bypass, injection, unsafe input, secret exposure, and sensitive-data leaks. In each changed file, list user inputs, database queries, auth checks, session state, external calls, and cryptography first. Report a security finding only when the value is attacker-controlled: request data, headers, unsigned cookies, URL segments, uploads, or other users' stored content. Settings, environment variables, and constants are not, and neither are patterns the framework already mitigates, such as auto-escaped templates or parameterized ORM queries. When a `security-review` skill is installed and the change touches a trust boundary, load it for this step.
-4. Sort each comment the change adds or leaves behind as a tautology (repeats the code), excuse (covers a hack), stale (describes code that changed), or decision record (a non-obvious why). An excuse is a should-fix finding against the hack it covers; a tautology or stale comment is a note. Apply the comment policy in `.slime/config.md` if present; the default is why-only.
+4. Sort each comment the change adds or leaves behind as a tautology (repeats the code), excuse (covers a hack), stale (describes code that changed), or decision record (a non-obvious why). Code comments are not allowed: any comment the change adds is a should-fix finding, and an excuse is also a finding against the hack it covers. Move a decision record to the commit or PR body, or an ADR where the repository keeps them.
 5. Prove each suspected defect against the caller contract, and with a focused check when cheap and safe. Report anything unproven as uncertainty, separate from demonstrated defects and with no required fix. When proving one needs the app running, state it as a condition for ranga-verifier.
 
 ## Findings
@@ -35,7 +35,7 @@ When asked to audit comments in a folder or the repository, sort every comment i
 
 - Delete tautologies and stale comments.
 - Delete excuses and list each hack as a follow-up. File issues only when the user asks.
-- List decision records with a recommended home (ADR, commit note, or keep under why-only) and move them after the user chooses.
+- List decision records with a recommended home (ADR or commit note) and move them after the user chooses.
 - Report counts per kind and lines removed.
 
 Leave license headers, directives (`eslint-disable`, `@ts-expect-error`, type annotations in comments), and generated files alone. A lint rule banning comments is per-repository tooling; recommend it only when comments keep returning after cleanup.

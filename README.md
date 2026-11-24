@@ -65,12 +65,12 @@ Each repository can hold a `.slime/` folder that the skills read instead of fixe
 
 ```
 .slime/
-├── config.md    # plans, handoffs, checks, comments, verification folder, PRs, models, Octagram
+├── config.md    # models, Octagram members, plans folder, handoffs
 ├── plans/       # Benimaru writes, Kurobe ticks
 └── handoffs/    # only when handoffs are saved as files
 ```
 
-Run great-sage-setup once per repository. It pre-fills answers from the repository and its PR history, asks one section at a time, and shows the draft before writing. Commit `.slime/` in a solo repository; gitignore it where others open PRs. Without a config, every skill keeps its built-in default.
+Run great-sage-setup once per repository. It writes only settings the skills can't derive from the repository, asks one section at a time, and shows the draft before writing. It edits nothing outside `.slime/` and `.gitignore`. Commit `.slime/` in a solo repository; gitignore it where others open PRs. Without a config, every skill keeps its built-in default.
 
 ## Update or remove
 
@@ -114,6 +114,8 @@ codex plugin add jccdlabs-skills@jccdlabs-skills
 The plugin supplies no connectors or extra permissions. Refresh its source with `codex plugin marketplace upgrade jccdlabs-skills`, then use your host's plugin update flow.
 
 ## Status
+
+Version 0.10.0 slims the per-project config and delegates more. Great Sage now writes only Models (a Work, Provider, Model, Effort table), Octagram members (a Member and Effort table) with max rounds, the plans folder, and handoffs; it no longer adds an instructions-file pointer, check, PR, comment, or commit rules, and writes nothing outside `.slime/` and `.gitignore`. Rimuru's delegation preferences read the config's Models table and fall back to the template's, so the model lineup lives in one place. Kurobe adds no code comments, and Hakuro reports any added comment as should-fix. Shion, Gobta, Ranga, and Kaijin take base branch, merge method, and checks from the repository. Skills also hand review to a fresh-context subagent and mechanical work to the cheapest same-provider model, and the collection installs as a Claude Code plugin. Existing `.slime/config.md` files keep working; their extra sections are ignored. Not exercised on real tasks yet.
 
 Version 0.9.0 adds a pull-request workflow and per-project config. Shion files PRs (problem first, then Evidence, Merge danger, and a model line), checks one before merge with a ready or blocked verdict, and reviews other authors' PRs by feature area with risk flags, posting drafted comments only when told. Gobta carries a change through Ranga, Hakuro, push, and Shion, then stops at the merge gate. Octagram runs a three-provider council that scores out of 10, loops until satisfied, and rejects scope creep. Great Sage writes `.slime/config.md`, which Benimaru, Kurobe, Kaijin, Ranga, and Rimuru now read for plan paths, checks, handoffs, and models. Kurobe stops writing comments that repeat the code or excuse a hack and removes ones its change makes stale; Hakuro flags them in review and can audit a folder's comments on request, following Matt Pocock's tautology, excuse, stale, and decision-record split. The comment policy is why-only by default, or none per project. PR, council, and comment conventions are adapted from Theo Browne's [tstack](https://github.com/t3dotgg/tstack) (MIT); its polling scripts were left out. The new skills have not been exercised on real tasks yet.
 
