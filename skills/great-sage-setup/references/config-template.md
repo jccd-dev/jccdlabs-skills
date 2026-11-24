@@ -22,6 +22,8 @@ Read by the JCCDLabs skills. Edit by hand or rerun great-sage-setup. A missing s
 | Gemini Pro | high |
 
 - Max rounds: 3
+- Pass score: none
+<!-- none: pass when every member is satisfied | 1-10: pass when the round average meets it -->
 
 ## Plans
 - Folder: .slime/plans/
